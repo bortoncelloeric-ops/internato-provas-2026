@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internato — Provas Junho/2026 · Material de Estudo</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#171a21; --ink:#e8eaed; --muted:#9aa3af;
+    --line:#2a2f3a; --accent:#5b9dff; --good:#34d399; --warn:#fbbf24; --bad:#f87171;
+    --apa:#5b9dff; --osce:#a78bfa; --ati:#34d399;
+  }
+  @media print{ :root{--bg:#fff;--card:#fff;--ink:#111;--muted:#555;--line:#ccc} details{open:true} nav.toc{display:none} }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:920px;margin:0 auto;padding:24px 18px 80px}
+  header h1{font-size:1.5rem;margin:0 0 4px}
+  header .sub{color:var(--muted);margin:0 0 18px}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.85rem;color:var(--muted);margin-bottom:20px}
+  .pill{padding:2px 10px;border-radius:999px;font-weight:600;font-size:.8rem;color:#0b0d12}
+  .pill.apa{background:var(--apa)} .pill.osce{background:var(--osce)} .pill.ati{background:var(--ati)}
+  nav.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:24px;position:sticky;top:8px;z-index:5}
+  nav.toc strong{display:block;margin-bottom:8px;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  nav.toc a{color:var(--ink);text-decoration:none;display:inline-block;margin:3px 12px 3px 0;font-size:.92rem;border-bottom:1px dashed transparent}
+  nav.toc a:hover{border-bottom-color:var(--accent);color:var(--accent)}
+  .block{margin:28px 0 8px}
+  .block > h2{font-size:1.2rem;border-left:5px solid var(--line);padding-left:10px;margin-bottom:4px}
+  .block.apa > h2{border-color:var(--apa)} .block.osce > h2{border-color:var(--osce)} .block.ati > h2{border-color:var(--ati)}
+  details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:12px 0;overflow:hidden}
+  summary{cursor:pointer;padding:14px 18px;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  summary::-webkit-details-marker{display:none}
+  summary .tag{font-size:.72rem;color:var(--muted);font-weight:500}
+  summary:hover{background:#1d212a}
+  .body{padding:4px 18px 18px;border-top:1px solid var(--line)}
+  h3{font-size:1.02rem;margin:18px 0 6px;color:var(--accent)}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.92rem}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+  th{background:#1d212a;color:var(--ink)}
+  td strong,.hl{color:var(--warn)}
+  .src{font-size:.78rem;color:var(--muted);font-style:italic}
+  .verify{color:var(--bad);font-weight:700}
+  .q{border-left:3px solid var(--line);padding:8px 0 8px 14px;margin:14px 0}
+  .q .stem{font-weight:600;margin-bottom:4px}
+  .q .alts{margin:2px 0 6px;color:var(--ink)}
+  .q .ans{background:#11261c;border:1px solid #1f5138;border-radius:8px;padding:8px 10px;font-size:.9rem}
+  .q .ans b{color:var(--good)}
+  .status{font-size:.8rem;padding:1px 8px;border-radius:6px;border:1px solid var(--line);color:var(--muted)}
+  .status.done{color:var(--good);border-color:#1f5138;background:#11261c}
+  .status.todo{color:var(--warn);border-color:#5a4a16;background:#231d0c}
+  footer{color:var(--muted);font-size:.8rem;margin-top:40px;border-top:1px solid var(--line);padding-top:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Internato — Material de Estudo (Provas Junho/2026)</h1>
+  <p class="sub">9º semestre · UNEXMED FSA · Grupo D/E/F (Materno-Infantil) · atualizado conforme o loop de produção avança</p>
+  <div class="legend">
+    <span><span class="pill apa">APA</span> 01/06 · 100 questões cumulativas</span>
+    <span><span class="pill osce">OSCE</span> 10/06 · 3 estações práticas</span>
+    <span><span class="pill ati">ATI</span> 19/06 · 30 questões Materno-Infantil</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <strong>Navegação</strong>
+  <a href="#apa-mi">APA · Materno-Infantil</a>
+  <a href="#apa-clinica">APA · Clínica ampla</a>
+  <a href="#apa-cirurgia">APA · Cirurgia/urgências</a>
+  <a href="#apa-coletiva">APA · Saúde Coletiva/SUS</a>
+  <a href="#apa-simulado">APA · Simulado</a>
+  <a href="#osce-gineco">OSCE · Ginecologia</a>
+  <a href="#osce-obs">OSCE · Obstetrícia</a>
+  <a href="#osce-ped">OSCE · Pediatria</a>
+  <a href="#ati-gineco">ATI · Ginecologia</a>
+  <a href="#ati-obs">ATI · Obstetrícia</a>
+  <a href="#ati-ped">ATI · Pediatria</a>
+</nav>
+
+<!-- ====================== APA ====================== -->
+<div class="block apa">
+  <h2>APA — Avaliação Progressiva (01/06) · prioridade 1</h2>
+
+  <details id="apa-mi" open>
+    <summary>Materno-Infantil — resumo + questões <span class="status done">✓ feito</span></summary>
+    <div class="body">
+
+      <h3>1. Obstetrícia — Pré-natal (MS)</h3>
+      <table>
+        <tr><th>Item</th><th>Fato de prova</th></tr>
+        <tr><td>Nº mínimo de consultas</td><td><strong>6</strong> (1 no 1º tri, 2 no 2º, 3 no 3º). Início ideal &lt; 12 sem</td></tr>
+        <tr><td>Ácido fólico</td><td>400 µg/dia, <strong>pré-concepção até 12 sem</strong> (previne defeito de tubo neural)</td></tr>
+        <tr><td>Vacinas</td><td><strong>dTpa</strong> a cada gestação (a partir de 20 sem), Hepatite B, Influenza</td></tr>
+        <tr><td>TOTG 75g</td><td><strong>24–28 sem</strong> se rastreio do 1º tri negativo</td></tr>
+      </table>
+      <p class="src">MS — Caderno de Atenção Básica nº 32 (2012, mín. 6 consultas confirmado). ⚠️ Referência atualizada = Guia do Pré-natal na APS (MS, 2024) — <span class="verify">confirmar qual a UNEXMED adota.</span></p>
+
+      <h3>2. Diabetes Mellitus Gestacional — TOTG 75g</h3>
+      <table>
+        <tr><th>Tempo</th><th>Corte (mg/dL)</th></tr>
+        <tr><td>Jejum</td><td>≥ <strong>92</strong></td></tr>
+        <tr><td>1 hora</td><td>≥ <strong>180</strong></td></tr>
+        <tr><td>2 horas</td><td>≥ <strong>153</strong></td></tr>
+      </table>
+      <p class="src">1 valor alterado fecha DMG. Jejum ≥126 ou aleatória ≥200 = DM prévio. (FEBRASGO/SBD)</p>
+
+      <h3>3. Síndromes Hipertensivas (SHEG)</h3>
+      <table>
+        <tr><th>Conceito</th><th>Definição</th></tr>
+        <tr><td>Pré-eclâmpsia</td><td>PA ≥140/90 <strong>após 20 sem</strong> + proteinúria (≥300mg/24h ou prot/creat ≥0,3) OU sinal de gravidade</td></tr>
+        <tr><td>Sinais de gravidade</td><td>PA ≥160/110, plaq &lt;100mil, Cr &gt;1,1, TGO/TGP 2×, sintomas visuais/cefaleia, dor epigástrica, EAP</td></tr>
+        <tr><td>Eclâmpsia</td><td>PE + <strong>convulsão</strong></td></tr>
+        <tr><td>Conduta convulsão</td><td><strong>Sulfato de magnésio</strong> = droga de escolha (Zuspan 4g+1g/h OU Pritchard); manter <strong>24h após o parto ou a última crise</strong>; antídoto = gluconato de cálcio</td></tr>
+        <tr><td>Prevenção (risco alto)</td><td><strong>AAS 100 mg à noite</strong>, da 12ª (antes da 16ª) à 36ª sem — dose Brasil/SUS. <em>(ACOG 81mg · FIGO 150mg)</em></td></tr>
+        <tr><td>Definitivo</td><td><strong>Parto</strong>. Anti-HAS de urgência: hidralazina/nifedipino</td></tr>
+      </table>
+      <p class="src">Protocolo RBEHG/FEBRASGO 2023. Proteinúria por fita: MS = 1 cruz (30mg/dL); ACOG = 2 cruzes.</p>
+
+      <h3>4. Sangramentos — DPP × Placenta prévia (2ª metade)</h3>
+      <table>
+        <tr><th></th><th>DPP (descolamento)</th><th>Placenta prévia</th></tr>
+        <tr><td>Sangramento</td><td>Escuro, <strong>com dor</strong></td><td>Vivo, <strong>indolor</strong></td></tr>
+        <tr><td>Tônus</td><td>Hipertonia</td><td>Normal</td></tr>
+        <tr><td>Sofrimento fetal</td><td>Comum/precoce</td><td>Raro inicial</td></tr>
+        <tr><td>Fator</td><td><strong>HAS</strong>, trauma, cocaína</td><td>Cesárea prévia, multíparas</td></tr>
+      </table>
+      <p class="src">1ª metade: abortamento / ectópica (β-hCG sem saco intraútero) / mola ("cachos de uva", útero &gt; IG, β-hCG muito alto).</p>
+
+      <h3>5. Hemorragia pós-parto — os 4 T</h3>
+      <p><strong>Tônus</strong> (atonia = nº1) · <strong>Trauma</strong> · <strong>Tecido</strong> · <strong>Trombina</strong>. Atonia → massagem + <strong>ocitocina</strong> (1ª linha).</p>
+      <p class="src">Cardiotoco: DIP I = cefálico (benigno); DIP II = insuf. placentária (sofrimento); DIP variável = cordão.</p>
+
+      <h3>6. Ginecologia — Corrimentos</h3>
+      <table>
+        <tr><th></th><th>Candidíase</th><th>Vaginose bacteriana</th><th>Tricomoníase</th></tr>
+        <tr><td>Corrimento</td><td>Branco grumoso</td><td>Acinzentado, fétido</td><td>Amarelo-esverdeado bolhoso</td></tr>
+        <tr><td>pH</td><td><strong>&lt;4,5</strong></td><td><strong>&gt;4,5</strong></td><td>&gt;5</td></tr>
+        <tr><td>Chave</td><td>Prurido, hifas (KOH)</td><td><strong>Clue cells, whiff+</strong> (Amsel ≥3)</td><td>Colo "framboesa", IST</td></tr>
+        <tr><td>Tto</td><td>Antifúngico</td><td><strong>Metronidazol</strong></td><td><strong>Metronidazol + parceiro</strong></td></tr>
+      </table>
+
+      <h3>7. Ginecologia — Rastreios <span class="status done">calibrado</span></h3>
+      <p><strong>⚠️ Rastreio de colo MUDOU (2024/2025) — risco alto de questão desatualizada:</strong></p>
+      <table>
+        <tr><th></th><th>Novo padrão oficial (2024/2025)</th><th>Regra antiga (ainda cobrada)</th></tr>
+        <tr><td>Método primário</td><td><strong>Teste DNA-HPV</strong> oncogênico</td><td>Citologia (Papanicolau)</td></tr>
+        <tr><td>Início</td><td><strong>25 anos</strong></td><td>25 anos</td></tr>
+        <tr><td>Intervalo</td><td><strong>5 anos</strong> se DNA-HPV negativo</td><td>Trienal após 2 anuais normais (até 64a)</td></tr>
+        <tr><td>Fluxo +</td><td>HPV 16/18 → colposcopia direta; outros → citologia reflexa</td><td>—</td></tr>
+      </table>
+      <p class="src">FEBRASGO/INCA/MS, Portaria DOU 18/08/2025. Citologia NÃO foi abolida — vira reflexa e segue primária onde o DNA-HPV não chegou (rollout até dez/2026). Na prova: "novo/oficial" → DNA-HPV; questão pode ainda usar a regra antiga.</p>
+      <table>
+        <tr><th>Mama</th><th>Recomendação</th></tr>
+        <tr><td>MS / INCA</td><td>Mamografia <strong>bienal, 50–69 anos</strong></td></tr>
+        <tr><td>FEBRASGO / SBM</td><td>Mamografia <strong>anual a partir dos 40</strong></td></tr>
+      </table>
+      <p class="src">Divergência clássica de banca (não resolvida) — <span class="verify">confirmar o que a UNEXMED adota.</span> SUA — mnemônico PALM-COEIN.</p>
+
+      <h3>8. Pediatria — alto rendimento</h3>
+      <table>
+        <tr><th>Tema</th><th>Fato de prova</th></tr>
+        <tr><td>Vacinas ao nascer</td><td><strong>BCG + Hepatite B</strong></td></tr>
+        <tr><td>Aleitamento exclusivo</td><td>Até <strong>6 meses</strong></td></tr>
+        <tr><td>Desidratação Plano B</td><td>SRO <strong>75 mL/kg em 4h</strong> na unidade. <strong>+ Zinco</strong> 10–14 dias (10mg/dia ≤6m; 20mg/dia &gt;6m–5a)</td></tr>
+        <tr><td>Taquipneia (OMS)</td><td>&lt;2m ≥60 · 2–12m ≥50 · 1–5a ≥40 irpm</td></tr>
+        <tr><td>Icterícia patológica</td><td>Início <strong>&lt;24h</strong> de vida (ou direta alta, ou &gt;12 dias)</td></tr>
+        <tr><td>Triagem neonatal</td><td>Pezinho, olhinho, orelhinha, coraçãozinho, linguinha</td></tr>
+        <tr><td>Marcos</td><td>Senta sem apoio 9m · anda + 1ªs palavras 12m</td></tr>
+      </table>
+      <p class="src"><strong>⚠️ Dois calendários vacinais:</strong> PNI (oficial SUS — pentavalente 2/4/6m, reforços DTP 15m e 4a; rotavírus em janelas absolutas) vs SBP (mais amplo). Banca "oficial/SUS" → PNI; "mais atual" → SBP. Novidade 2025/26: proteção <strong>VSR</strong> (vacina da gestante Abrysvo OU Nirsevimabe no bebê). Fontes: PNI 2025/26, Calendário SBP 2025/26, doc. SBP icterícia 2021, fluxograma diarreia MS 2023.</p>
+
+      <h3>Questões comentadas</h3>
+      <div class="q"><div class="stem">Q1. Gestante 26 sem, PA 165/115, cefaleia e escotomas, proteinúria 2+. Conduta mais importante além do anti-HAS?</div><div class="alts">A) Corticoide e alta · B) Sulfato de magnésio · C) Diurético · D) Repouso domiciliar</div><div class="ans"><b>B.</b> Pré-eclâmpsia grave (PA≥160/110 + sintomas) → MgSO₄ previne eclâmpsia. Definitivo é o parto; diurético não entra; alta é erro.</div></div>
+      <div class="q"><div class="stem">Q2. TOTG 75g na 26ª sem: jejum 95, 1h 175, 2h 140. Diagnóstico?</div><div class="alts">A) Normal · B) DM prévio · C) DMG · D) Intolerância</div><div class="ans"><b>C.</b> Jejum ≥92 já fecha DMG (1 valor basta). Não atinge critério de DM prévio (jejum ≥126).</div></div>
+      <div class="q"><div class="stem">Q3. Sangramento vermelho-vivo, indolor, útero relaxado, sem sofrimento fetal, 32 sem.</div><div class="alts">A) DPP · B) Placenta prévia · C) Rotura · D) Trabalho de parto</div><div class="ans"><b>B.</b> Indolor + tônus normal + sangue vivo = prévia. DPP é dor + hipertonia + sangue escuro.</div></div>
+      <div class="q"><div class="stem">Q4. Causa mais comum de hemorragia pós-parto?</div><div class="alts">A) Laceração · B) Retenção placentária · C) Atonia uterina · D) Coagulopatia</div><div class="ans"><b>C.</b> Tônus (atonia) é o 1º dos 4 T. Conduta: massagem + ocitocina.</div></div>
+      <div class="q"><div class="stem">Q5. Corrimento acinzentado fétido, pH 5,5, whiff+, clue cells. Dx e tto?</div><div class="alts">A) Candidíase/fluconazol · B) Vaginose/metronidazol · C) Tricomoníase/nistatina · D) Gonorreia/ceftriaxona</div><div class="ans"><b>B.</b> Critérios de Amsel = vaginose bacteriana → metronidazol.</div></div>
+      <div class="q"><div class="stem">Q6. RN com icterícia surgindo com 18h de vida, Coombs direto +. O quadro é:</div><div class="alts">A) Fisiológico · B) Patológico (provável incompatibilidade) · C) Leite materno · D) Normal</div><div class="ans"><b>B.</b> Icterícia &lt;24h é sempre patológica; Coombs+ sugere incompatibilidade ABO/Rh.</div></div>
+      <div class="q"><div class="stem">Q7. Lactente 8 meses, FR 52 irpm, tosse, febre, sem tiragem. Conduta?</div><div class="alts">A) UTI · B) Amoxicilina ambulatorial · C) Só sintomáticos · D) Corticoide</div><div class="ans"><b>B.</b> Taquipneia (≥50 entre 2–12m) = pneumonia; sem gravidade → amoxicilina ambulatorial.</div></div>
+      <div class="q"><div class="stem">Q8. Útero &gt; IG, β-hCG muito alto, hiperêmese, USG "cachos de uva".</div><div class="alts">A) Gemelar · B) Mola hidatiforme · C) Polidrâmnio · D) Ectópica</div><div class="ans"><b>B.</b> Mola hidatiforme.</div></div>
+      <div class="q"><div class="stem">Q9. Segundo as novas Diretrizes Brasileiras (2024/2025), o método PRIMÁRIO de rastreio do câncer de colo no SUS e o intervalo quando negativo são:</div><div class="alts">A) Citologia anual · B) Teste DNA-HPV a cada 5 anos, a partir dos 25 · C) Colposcopia trienal · D) Citologia trienal dos 25–64</div><div class="ans"><b>B.</b> DNA-HPV virou o método primário, início aos 25, intervalo de 5 anos se negativo. A citologia trienal (D) é a regra antiga — ainda válida onde o DNA-HPV não foi implantado, mas não é mais o padrão oficial novo.</div></div>
+      <div class="q"><div class="stem">Q10. Gestante de alto risco para pré-eclâmpsia. Profilaxia recomendada (dose Brasil/SUS) e janela?</div><div class="alts">A) AAS 100mg/noite, 12ª→36ª sem · B) AAS 81mg até o parto · C) Cálcio isolado · D) Heparina profilática</div><div class="ans"><b>A.</b> No Brasil: AAS 100mg à noite, da 12ª (idealmente antes da 16ª) à 36ª semana. As doses 81mg (ACOG) e 150mg (FIGO) são divergências internacionais.</div></div>
+      <p class="src">Banco completo preservado em apa-materno-infantil.md. Calibrado em fontes-vetadas.md.</p>
+
+    </div>
+  </details>
+
+  <details id="apa-clinica">
+    <summary>Clínica ampla — cardio/pneumo/endócrino/GI/infecto <span class="status done">✓ feito</span></summary>
+    <div class="body">
+<h3>Cardiologia — HAS</h3>
+<table>
+<tr><th>Classificação (consultório, mmHg)</th><th>PAS / PAD</th></tr>
+<tr><td>Normal / Ótima</td><td>&lt;120 e &lt;80</td></tr>
+<tr><td>Pré-hipertensão</td><td>121–139 ou 81–89</td></tr>
+<tr><td><strong>Estágio 1</strong></td><td>140–159 ou 90–99</td></tr>
+<tr><td><strong>Estágio 2</strong></td><td>160–179 ou 100–109</td></tr>
+<tr><td><strong>Estágio 3</strong></td><td>≥180 ou ≥110</td></tr>
+</table>
+<table>
+<tr><th>Classe</th><th>Pontos de prova</th></tr>
+<tr><td><strong>IECA</strong> (enalapril)</td><td>Nefroproteção (DM/DRC); tosse seca, hipercalemia, angioedema; <strong>contraindicado na gravidez</strong></td></tr>
+<tr><td><strong>BRA</strong> (losartana)</td><td>Alternativa ao IECA sem tosse; nunca associar IECA+BRA</td></tr>
+<tr><td><strong>Tiazídico</strong> (hidroclorotiazida)</td><td>1ª linha; hipoK, hiperuricemia</td></tr>
+<tr><td><strong>BCC</strong> (anlodipino)</td><td>1ª linha; edema de MMII</td></tr>
+</table>
+<p class="src">Meta geral &lt;140/90 (e &lt;130/80 se alto risco/DM/DRC). Diretriz SBC. <span class="verify">VERIFICAR</span> meta exata por subgrupo conforme versão cobrada.</p>
+
+<h3>Cardiologia — IAM (conduta MONABCH)</h3>
+<table>
+<tr><th>Tipo</th><th>Conduta-chave</th></tr>
+<tr><td><strong>IAMCSST</strong> (supra ST ≥1mm em 2 contíguas)</td><td><strong>Reperfusão imediata</strong>: angioplastia ≤90–120min; fibrinólise ≤30min se ICP indisponível (até 12h)</td></tr>
+<tr><td><strong>IAMSSST/AI</strong></td><td>Estratificação (GRACE/TIMI), dupla antiagregação, anticoagulação</td></tr>
+</table>
+<table>
+<tr><td><strong>M</strong>orfina</td><td>dor refratária</td></tr>
+<tr><td><strong>O</strong>xigênio</td><td>só se SatO₂ &lt;90%</td></tr>
+<tr><td><strong>N</strong>itrato</td><td>contraindicado se hipotensão/IAM de VD/PDE5</td></tr>
+<tr><td><strong>A</strong>AS</td><td>150–300mg mastigado a todos</td></tr>
+<tr><td><strong>B</strong>etabloqueador</td><td>1ªs 24h se estável</td></tr>
+<tr><td><strong>C</strong>lopidogrel</td><td>2º antiagregante</td></tr>
+<tr><td><strong>H</strong>eparina</td><td>anticoagulação</td></tr>
+</table>
+
+<h3>Cardiologia — IC</h3>
+<table>
+<tr><td>Classificação FE</td><td><strong>ICFEr ≤40%</strong>; ICFEmr 41–49%; ICFEp ≥50%</td></tr>
+<tr><td>Marcador</td><td><strong>BNP/NT-proBNP</strong> (normal afasta IC)</td></tr>
+<tr><td>Pilares ICFEr (↓mortalidade)</td><td><strong>IECA/BRA ou sacubitril-valsartana + betabloqueador + espironolactona + iSGLT2</strong></td></tr>
+<tr><td>Furosemida</td><td>só congestão, não muda mortalidade</td></tr>
+</table>
+
+<h3>Pneumologia — Asma (GINA)</h3>
+<table>
+<tr><td>Resgate (todas etapas)</td><td><strong>CI-formoterol dose baixa</strong> (abandono do SABA isolado)</td></tr>
+<tr><td>Etapa 3</td><td>CI dose baixa + LABA</td></tr>
+<tr><td>Crise grave</td><td>corticoide sistêmico, O₂, SABA</td></tr>
+</table>
+<p class="src"><span class="verify">VERIFICAR</span> versão GINA cobrada.</p>
+
+<h3>Pneumologia — DPOC</h3>
+<table>
+<tr><td>Diagnóstico</td><td><strong>VEF₁/CVF &lt;0,70 pós-broncodilatador</strong> (não reversível)</td></tr>
+<tr><td>↓Mortalidade</td><td><strong>Cessar tabagismo</strong> + O₂ domiciliar (PaO₂ ≤55)</td></tr>
+<tr><td>Base</td><td>LABA/LAMA; CI se eosinofilia/exacerbador</td></tr>
+</table>
+
+<h3>Pneumologia — PAC (CURB-65)</h3>
+<table>
+<tr><th>Critério (1 ponto cada)</th><th></th></tr>
+<tr><td><strong>C</strong>onfusão</td><td>desorientação nova</td></tr>
+<tr><td><strong>U</strong>reia</td><td>&gt;50 mg/dL</td></tr>
+<tr><td><strong>R</strong> (FR)</td><td>≥30 irpm</td></tr>
+<tr><td><strong>B</strong> (PA)</td><td>PAS&lt;90 ou PAD≤60</td></tr>
+<tr><td><strong>65</strong></td><td>≥65 anos</td></tr>
+</table>
+<p class="src">0–1 ambulatorial · 2 considerar internação · ≥3 internar (≥4 UTI). Ambulatorial: amoxicilina ± macrolídeo.</p>
+
+<h3>Endocrinologia — DM2</h3>
+<table>
+<tr><th>Diagnóstico</th><th>Valor</th></tr>
+<tr><td>Jejum</td><td>≥126 mg/dL</td></tr>
+<tr><td>TOTG 2h</td><td>≥200</td></tr>
+<tr><td>HbA1c</td><td>≥6,5%</td></tr>
+<tr><td>Aleatória + sintomas</td><td>≥200</td></tr>
+</table>
+<table>
+<tr><td>Meta HbA1c (geral)</td><td><strong>&lt;7%</strong> (&lt;8% idoso frágil)</td></tr>
+<tr><td>1ª linha</td><td><strong>Metformina</strong> + MEV</td></tr>
+<tr><td>DCV/IC/DRC</td><td>+ <strong>iSGLT2</strong> e/ou GLP-1 (independe da HbA1c)</td></tr>
+</table>
+<p class="src">SBD 2023. Diagnóstico exige confirmação (2 testes ou sintomas+1).</p>
+
+<h3>Endocrinologia — Tireoide</h3>
+<table>
+<tr><th></th><th>Hipo</th><th>Hiper</th></tr>
+<tr><td>Causa</td><td><strong>Hashimoto</strong> (anti-TPO+)</td><td><strong>Graves</strong> (TRAb+)</td></tr>
+<tr><td>TSH/T4L</td><td><strong>TSH↑ / T4L↓</strong></td><td><strong>TSH↓ / T4L↑</strong></td></tr>
+<tr><td>Tto</td><td>Levotiroxina</td><td>Metimazol (PTU 1º tri), betabloq.</td></tr>
+</table>
+
+<h3>Gastro — DRGE / Hepatites / Cirrose</h3>
+<table>
+<tr><td>DRGE típica</td><td>Prova terapêutica com <strong>IBP</strong>; EDA se alarme (disfagia, perda de peso, anemia, HDA, &gt;40–45a)</td></tr>
+<tr><td>HBsAg</td><td>infecção atual; <strong>anti-HBs isolado = vacinado</strong>; anti-HBc IgM = aguda; HBeAg = replicação</td></tr>
+<tr><td>Anti-HCV</td><td>exposição; confirmar com HCV-RNA</td></tr>
+<tr><td>Cirrose/HDA varicosa</td><td>vasoativo (terlipressina) + ligadura + <strong>ATB profilático (ceftriaxona, ↓mortalidade)</strong></td></tr>
+<tr><td>PBE</td><td>líquido ascítico ≥250 PMN/mm³ → cefalosporina 3ª ger.</td></tr>
+</table>
+
+<h3>Infecto — Dengue / Sepse</h3>
+<table>
+<tr><th>Grupo dengue</th><th>Conduta</th></tr>
+<tr><td>A</td><td>sem alarme/risco — hidratação oral domiciliar</td></tr>
+<tr><td>B</td><td>sangramento de pele ou comorbidade — observação + hemograma</td></tr>
+<tr><td><strong>C</strong></td><td><strong>com sinais de alarme</strong> — internação, hidratação IV</td></tr>
+<tr><td>D</td><td>dengue grave (choque/disfunção) — UTI</td></tr>
+</table>
+<p class="src">Sinais de alarme: dor abdominal intensa, vômitos persistentes, ↑hematócrito, hipotensão postural, hepatomegalia&gt;2cm, sangramento de mucosa, letargia. Surgem na defervescência.</p>
+<table>
+<tr><th>qSOFA (≥2 = alto risco)</th><th></th></tr>
+<tr><td>FR</td><td>≥22</td></tr>
+<tr><td>Mental</td><td>Glasgow &lt;15</td></tr>
+<tr><td>PAS</td><td>≤100</td></tr>
+</table>
+<p class="src">Choque séptico = vasopressor p/ PAM≥65 + lactato&gt;2 apesar de volume. 1ª hora: lactato, hemoculturas, ATB precoce, cristaloide 30mL/kg, noradrenalina.</p>
+
+<h3>Questões comentadas</h3>
+<div class="q"><div class="stem">Q1. Homem 58a diabético, PA 152/96 em duas medidas. Classe anti-HAS com benefício de nefroproteção?</div><div class="alts">A) Betabloqueador · B) IECA · C) Diurético de alça · D) Alfabloqueador</div><div class="ans"><b>B.</b> IECA reduz albuminúria no diabético, 1ª linha. BB não é 1ª linha sem comorbidade; alça é p/ congestão; alfabloqueador não nefroprotege.</div></div>
+<div class="q"><div class="stem">Q2. Dor torácica há 40min, supra de ST inferior. Sem hemodinâmica, transferência 3h. Reperfusão?</div><div class="alts">A) Aguardar transferência · B) Fibrinólise imediata · C) AAS e observação · D) Ergometria</div><div class="ans"><b>B.</b> IAMCSST com ICP indisponível em tempo hábil (&le;120min) → fibrinólise &le;30min, até 12h. Esperar &gt;120min é erro; ergometria é contraindicada no IAM agudo.</div></div>
+<div class="q"><div class="stem">Q3. No IAM, qual conduta NÃO é rotineira?</div><div class="alts">A) AAS mastigado · B) Oxigênio em todos · C) Nitrato se dor e PA ok · D) Dupla antiagregação</div><div class="ans"><b>B.</b> O₂ só se SatO₂&lt;90%; uso rotineiro pode ser deletério. As demais são corretas.</div></div>
+<div class="q"><div class="stem">Q4. Qual grupo reduz mortalidade na ICFEr?</div><div class="alts">A) Furosemida · B) Digoxina · C) Betabloqueador · D) BCC di-hidropiridínico</div><div class="ans"><b>C.</b> Betabloqueador é pilar e ↓mortalidade. Furosemida alivia congestão; digoxina ↓internações; BCC pode piorar IC.</div></div>
+<div class="q"><div class="stem">Q5. Resgate preferencial na asma do adulto (GINA)?</div><div class="alts">A) SABA isolado · B) Corticoide oral · C) CI-formoterol dose baixa · D) Ipratrópio</div><div class="ans"><b>C.</b> GINA abandonou monoterapia com SABA; CI-formoterol reduz exacerbações.</div></div>
+<div class="q"><div class="stem">Q6. Tabagista 60a, dispneia, VEF₁/CVF 0,62 pós-BD. Diagnóstico?</div><div class="alts">A) Asma · B) DPOC · C) Bronquiectasia · D) FPI</div><div class="ans"><b>B.</b> Obstrução fixa (&lt;0,70) não reversível em tabagista = DPOC. Asma é reversível.</div></div>
+<div class="q"><div class="stem">Q7. Mulher 70a, PAC: confusão, FR 32, ureia 60, PA 130/80. CURB-65 e conduta?</div><div class="alts">A) 1, ambulatorial · B) 2, observação · C) 3, internação · D) 4, internação e considerar UTI</div><div class="ans"><b>D.</b> Pontua: confusão (1) + ureia&gt;50 (1) + FR≥30 (1) + idade≥65 (1) = 4. PA normal não pontua. Escore 4 → internação, fortemente considerar UTI. A/B/C subestimam.</div></div>
+<div class="q"><div class="stem">Q8. 1ª linha farmacológica no DM2 sem DCV?</div><div class="alts">A) Insulina NPH · B) Metformina · C) Sulfonilureia · D) iSGLT2</div><div class="ans"><b>B.</b> Metformina + MEV. Insulina se hiperglicemia grave; sulfonilureia 2ª linha; iSGLT2 preferencial se DCV/IC/DRC.</div></div>
+<div class="q"><div class="stem">Q9. TSH↑, T4L↓, anti-TPO+. Diagnóstico e tto?</div><div class="alts">A) Graves/metimazol · B) Hashimoto/levotiroxina · C) Tireoidite subaguda/AINE · D) Subclínico/observar</div><div class="ans"><b>B.</b> Hipotireoidismo primário por Hashimoto → levotiroxina. Graves tem TSH baixo; subclínico teria T4L normal.</div></div>
+<div class="q"><div class="stem">Q10. HBsAg+, anti-HBc IgM+, HBeAg+. Interpretação?</div><div class="alts">A) Vacinado · B) Hepatite B aguda com alta replicação · C) Cura · D) Crônica inativa</div><div class="ans"><b>B.</b> Infecção atual (HBsAg+) + aguda (anti-HBc IgM+) + replicação (HBeAg+). Vacinado teria só anti-HBs.</div></div>
+<div class="q"><div class="stem">Q11. Cirrótico com hematêmese. Além de estabilização e ligadura, medida que ↓mortalidade?</div><div class="alts">A) Corticoide · B) ATB profilático (ceftriaxona) · C) Vitamina K isolada · D) IBP isolado</div><div class="ans"><b>B.</b> ATB profilático na HDA do cirrótico ↓infecções e mortalidade.</div></div>
+<div class="q"><div class="stem">Q12. 5º dia de dengue, defervescência, dor abdominal intensa, vômitos, ↑hematócrito. Grupo e conduta?</div><div class="alts">A) A, oral domiciliar · B) B, observação · C) C, internação e hidratação IV · D) D, sem UTI</div><div class="ans"><b>C.</b> Sinais de alarme → grupo C, internação com hidratação venosa. D (grave) exige UTI; o quadro ainda é C.</div></div>
+    </div>
+  </details>
+
+  <details id="apa-cirurgia">
+    <summary>Cirurgia / urgências <span class="status done">✓ feito</span></summary>
+    <div class="body">
+
+      <h3>Abdome Agudo — Classificação (topo de prova)</h3>
+      <table>
+        <tr><th>Tipo</th><th>Clínica-chave</th><th>Causa mais comum</th></tr>
+        <tr><td><strong>Inflamatório</strong></td><td>Dor progressiva, localizada, Blumberg+</td><td><strong>Apendicite</strong></td></tr>
+        <tr><td><strong>Obstrutivo</strong></td><td>Distensão, parada de eliminação, peristalse de luta</td><td><strong>Bridas</strong> (se cirurgia prévia) / Hérnia</td></tr>
+        <tr><td><strong>Perfurativo</strong></td><td>Dor súbita intensa, abdome em tábua, pneumoperitônio</td><td><strong>Úlcera péptica</strong></td></tr>
+        <tr><td><strong>Vascular</strong></td><td>Dor desproporcional ao exame, acidose, FA</td><td><strong>Isquemia mesentérica</strong></td></tr>
+        <tr><td><strong>Hemorrágico</strong></td><td>Choque + dor abdominal (mulher em idade fértil)</td><td><strong>Gravidez ectópica rota</strong></td></tr>
+      </table>
+
+      <h3>Apendicite Aguda</h3>
+      <table>
+        <tr><th>Item</th><th>Fato de prova</th></tr>
+        <tr><td>Clínica clássica</td><td>Dor epigástrica/periumbilical → migra para <strong>FID</strong> + náusea/vômito + febre baixa + anorexia</td></tr>
+        <tr><td>Sinais</td><td><strong>Blumberg</strong> (descompressão dolorosa FID), <strong>Rovsing</strong> (compressão FIE dói na FID), Psoas/Obturador (retrocecal/pélvica)</td></tr>
+        <tr><td>Exames</td><td>Leucocitose com desvio. USG/TCMD (padrão-ouro). <strong>Escore de Alvarado</strong> p/ estratificar risco</td></tr>
+        <tr><td>Complicação</td><td><strong>Perfuração</strong> (após 24-48h, ↑morbimortalidade)</td></tr>
+        <tr><td>Tto</td><td><strong>Apendicectomia</strong> (laparoscópica) + ATB. Casos não complicados = cirurgia precoce (não emergência imediata)</td></tr>
+      </table>
+
+      <h3>Colecistite / Colelitíase</h3>
+      <table>
+        <tr><td>Cólica biliar</td><td>Dor em HCD/epigástrio pós-prandial, autolimitada. USG: cálculo sem espessamento</td></tr>
+        <tr><td><strong>Colecistite aguda</strong></td><td>Dor >6h, <strong>Murphy+</strong>, febre, leucocitose. USG: parede >4mm, líquido pericolecístico</td></tr>
+        <tr><td>Coledocolitíase</td><td>Icterícia + cólica. Dilatação de via biliar + ↑FA/GGT</td></tr>
+        <tr><td>Colangite</td><td><strong>Tríade de Charcot</strong> (dor + icterícia + febre com calafrio). <strong>Pêntade de Reynolds</strong> (+confusão + choque = grave)</td></tr>
+        <tr><td>Tto colecistite</td><td><strong>Colecistectomia precoce</strong> (≤72h do início) + ATB</td></tr>
+      </table>
+
+      <h3>Trauma — ATLS (ABCDE)</h3>
+      <table>
+        <tr><th>Etapa</th><th>Ação imediata</th><th>Ponto de prova</th></tr>
+        <tr><td><strong>A</strong> (via aérea)</td><td>Permeabilizar + colar cervical</td><td>Falar ≠ permeável; <strong>GCS ≤8 = IOT</strong></td></tr>
+        <tr><td><strong>B</strong> (respiração)</td><td>Inspeção, ausculta, palpação, oximetria</td><td><strong>Pneumotórax hipertensivo:</strong> turgência jugular, desvio de traqueia, MV abolido, timpanismo → toracocentese imediata (2º EIC LHC / 5º EIC LAA)</td></tr>
+        <tr><td><strong>C</strong> (circulação)</td><td>2 acessos calibrosos, cristaloides aquecidos, controle hemorragia externa</td><td>Choque hipovolêmico: classes I–IV conforme % volemia perdida. <strong>Ácido tranexâmico (ATX)</strong> ≤3h se hemorragia grave</td></tr>
+        <tr><td><strong>D</strong> (neurológico)</td><td>GCS + pupilas</td><td>HIC → <strong>manitol/hipertônica</strong> + cabeceira 30° + hiperventilação (ponte)</td></tr>
+        <tr><td><strong>E</strong> (exposição)</td><td>Despir, rolar, prevenir hipotermia</td><td>Não esquecer dorso e períneo</td></tr>
+      </table>
+      <p class="src">ATLS 10ª ed. Tríade letal: acidose + hipotermia + coagulopatia. Controle de danos: cirurgia abreviada + reanimação na UTI.</p>
+
+      <h3>Queimaduras</h3>
+      <table>
+        <tr><th>Item</th><th>Fato de prova</th></tr>
+        <tr><td>Superfície (regra dos 9)</td><td>Cabeça 9%, tronco anterior 18%, posterior 18%, cada braço 9%, cada perna 18%, períneo 1%</td></tr>
+        <tr><td>Reposição (Parkland)</td><td><strong>2–4 mL Ringer lactato × kg × %SCQ</strong> nas 1ªs 24h (metade em 8h, metade em 16h, contados da hora da queimadura)</td></tr>
+        <tr><td>Grande queimado</td><td>>20% SCQ adulto, >10% criança/idoso; queimadura de 3º grau >5%; vias aéreas, face, mãos, períneo</td></tr>
+        <tr><td>Escarotomia</td><td>Queimadura circunferencial de 3º grau em tórax ou membro com risco isquêmico</td></tr>
+        <tr><td>Prognóstico</td><td><strong>Índice de Baux = idade + %SCQ</strong> (≥100 = alta letalidade; com inalação adiciona 17)</td></tr>
+      </table>
+
+      <h3>Hérnias da Parede Abdominal</h3>
+      <table>
+        <tr><th>Tipo</th><th>Fato de prova</th></tr>
+        <tr><td><strong>Inguinal indireta</strong></td><td>Mais comum (H e M). Congênita (persistência do conduto peritoniovaginal). Lateral aos vasos epigástricos</td></tr>
+        <tr><td>Inguinal direta</td><td>Adquirida (fraqueza da fáscia transversalis). Medial aos vasos epigástricos. Mais comum em idosos</td></tr>
+        <tr><td>Femoral</td><td>Mais comum em <strong>mulheres</strong>. Abaixo do ligamento inguinal. <strong>Maior risco de encarceramento</strong></td></tr>
+        <tr><td>Encarcerada vs Estrangulada</td><td>Encarcerada = irredutível sem sofrimento vascular; Estrangulada = <strong>sofrimento vascular/isquemia</strong> → cirurgia de urgência</td></tr>
+      </table>
+
+      <h3>Politrauma — Prioridades e lesões ocultas</h3>
+      <table>
+        <tr><td>Fraturas pélvicas</td><td>Instabilidade hemodinâmica → <strong>fixador pélvico/cinto</strong> + angioembolização</td></tr>
+        <tr><td>TCE grave</td><td>GCS ≤8 → IOT + TC crânio. Manter <strong>PAM ≥80, SvjO₂, PIC</strong>. Evitar hipoxemia e hipotensão (lesão secundária)</td></tr>
+        <tr><td>Trauma torácico</td><td><strong>Pneumotórax aberto</strong> → curativo de 3 pontas. Tamponamento → <strong>tríade de Beck</strong> (hipotensão + turgência jugular + hipofonese de bulhas)</td></tr>
+        <tr><td>Trauma abdominal</td><td>Instável → <strong>LPD ou FAST</strong>. Estável → TC. Ferimento penetrante em transição toracoabdominal = alto risco</td></tr>
+        <tr><td>Rabdomiólise</td><td>CK >5× normal. Prevenir NTA: <strong>hidratação vigorosa</strong> (meta diurese 200-300 mL/h)</td></tr>
+      </table>
+
+      <h3>Questões comentadas</h3>
+      <div class="q"><div class="stem">Q1. Homem 25a, dor abdominal iniciada em epigástrio, migrou para FID há 12h, náusea, 37,8°C, Blumberg+. Diagnóstico?</div><div class="alts">A) Colecistite · B) Pancreatite · C) Apendicite aguda · D) Diverticulite</div><div class="ans"><b>C.</b> Dor migratória periumbilical → FID + Blumberg+ é quadro clássico de apendicite. Colecistite é HCD; pancreatite é epigástrio em faixa; diverticulite é FIE em >50a.</div></div>
+      <div class="q"><div class="stem">Q2. Mulher 65a, dor HCD há 8h, Murphy+, USG com parede vesicular 6mm + líquido pericolecístico. Conduta?</div><div class="alts">A) Analgesia e alta com retorno · B) Colecistectomia precoce + ATB · C) ATB isolado por 7 dias · D) CPRE urgente</div><div class="ans"><b>B.</b> Colecistite aguda (dor >6h, Murphy+, USG alterado) → colecistectomia precoce (<72h). CPRE é para coledocolitíase/colangite.</div></div>
+      <div class="q"><div class="stem">Q3. Qual NÃO faz parte da tríade de Charcot?</div><div class="alts">A) Febre com calafrio · B) Icterícia · C) Hipotensão · D) Dor em HCD</div><div class="ans"><b>C.</b> Hipotensão + confusão mental transformam Charcot em Pêntade de Reynolds (colangite grave). A tríade é dor + febre + icterícia.</div></div>
+      <div class="q"><div class="stem">Q4. Acidente moto, FR 38, MV abolido à D, timpanismo, turgência jugular. Conduta IMEDIATA?</div><div class="alts">A) IOT · B) Radiografia de tórax · C) Toracocentese descompressiva · D) Drenagem torácica em selo d'água</div><div class="ans"><b>C.</b> Pneumotórax hipertensivo suspeito (clínica clássica) → descompressão imediata com agulha (2º EIC LHC). Diagnóstico é clínico; não se espera RX. Dreno vem depois.</div></div>
+      <div class="q"><div class="stem">Q5. Homem 50a, 30% SCQ queimadura (chama), peso 70kg. Volume RL nas 1ªs 8h (Parkland)?</div><div class="alts">A) 2.100 mL · B) 4.200 mL · C) 6.300 mL · D) 8.400 mL</div><div class="ans"><b>B.</b> Parkland = 4 × 70 × 30 = 8.400 mL nas 24h; metade (4.200 mL) nas 1ªs 8h contadas da hora da queimadura.</div></div>
+      <div class="q"><div class="stem">Q6. Abdome agudo perfurativo: qual o sinal radiológico?</div><div class="alts">A) Níveis hidroaéreos · B) Pneumoperitônio · C) Distensão de delgado · D) Espessamento parietal</div><div class="ans"><b>B.</b> Perfuração de víscera oca → ar livre na cavidade (pneumoperitônio). Níveis hidroaéreos = obstrutivo.</div></div>
+      <div class="q"><div class="stem">Q7. Hérnia inguinal: a diferença anatômica entre indireta e direta é em relação a:</div><div class="alts">A) Anel inguinal superficial · B) Vasos epigástricos inferiores · C) Ligamento inguinal · D) Cordão espermático</div><div class="ans"><b>B.</b> Indireta = lateral aos vasos epigástricos; direta = medial. Referência clássica de prova.</div></div>
+      <div class="q"><div class="stem">Q8. Mulher 70a, dor em região inguinal, massa irredutível abaixo do ligamento inguinal, extremamente dolorosa. Principal risco?</div><div class="alts">A) Apendicite · B) Estrangulamento de hérnia femoral · C) Linfadenite · D) Abscesso</div><div class="ans"><b>B.</b> Hérnia femoral (abaixo do ligamento, mais comum em mulheres) tem o maior risco de encarceramento/estrangulamento entre as hérnias da parede.</div></div>
+      <div class="q"><div class="stem">Q9. Tamponamento cardíaco no trauma: tríade clássica?</div><div class="alts">A) Hipotensão + turgência jugular + hipofonese de bulhas · B) Dor + febre + sopro · C) Hipotensão + taquicardia + sudorese · D) Dispneia + cianose + estridor</div><div class="ans"><b>A.</b> Tríade de Beck. FAST mostra líquido pericárdico. Conduta: pericardiocentese descompressiva.</div></div>
+      <div class="q"><div class="stem">Q10. Trauma: qual o primeiro passo do ATLS ao admitir o paciente na sala de emergência?</div><div class="alts">A) Expor completamente · B) Verificar pulsos periféricos · C) Avaliar via aérea com proteção da coluna cervical · D) Instalar monitorização</div><div class="ans"><b>C.</b> A (via aérea + colar cervical) é sempre o primeiro passo do ABCDE. Os demais itens vêm depois.</div></div>
+
+    </div>
+  </details>
+
+  <details id="apa-coletiva">
+    <summary>Saúde Coletiva / SUS — epidemiologia, indicadores <span class="status done">✓ feito</span></summary>
+    <div class="body">
+
+      <h3>Princípios do SUS (topo de prova)</h3>
+      <table>
+        <tr><th>Doutrinários</th><th>Definição</th></tr>
+        <tr><td><strong>Universalidade</strong></td><td>Todos têm direito; o Estado tem dever de garantir</td></tr>
+        <tr><td><strong>Equidade</strong></td><td>Tratar desigualmente os desiguais; reduzir iniquidades</td></tr>
+        <tr><td><strong>Integralidade</strong></td><td>Promoção, prevenção, cura, reabilitação — todos os níveis</td></tr>
+      </table>
+      <table>
+        <tr><th>Organizativos</th><th>Definição</th></tr>
+        <tr><td><strong>Regionalização / Hierarquização</strong></td><td>Serviços organizados por nível de complexidade e território</td></tr>
+        <tr><td><strong>Descentralização</strong></td><td>Gestão em cada esfera: União, Estado, Município</td></tr>
+        <tr><td><strong>Participação social</strong></td><td>Conselhos e conferências de saúde (Lei 8142/90)</td></tr>
+      </table>
+      <p class="src"><strong>Lei 8080/90</strong> = lei orgânica do SUS (princípios + organização). <strong>Lei 8142/90</strong> = participação social + transferências intergovernamentais. A 8080 NÃO trata de participação social (veio na 8142).</p>
+
+      <h3>Financiamento e Gestão</h3>
+      <table>
+        <tr><th>Item</th><th>Fato de prova</th></tr>
+        <tr><td>EC 29/2000</td><td>Vinculação orçamentária: União = IPCA; Estados = 12%; Municípios = 15% da receita</td></tr>
+        <tr><td>Blocos de financiamento</td><td>Custeio (MAC, APS, assistência farmacêutica) + Investimento. Fundo a fundo (regular e automático)</td></tr>
+        <tr><td>Controle social</td><td><strong>Conselhos</strong> (permanentes, deliberativos, 50% usuários) + <strong>Conferências</strong> (a cada 4 anos, propositivas)</td></tr>
+        <tr><td>CIT / CIB</td><td>Comissão Intergestores Tripartite (federal) / Bipartite (estadual) — pactuação entre esferas</td></tr>
+      </table>
+
+      <h3>Epidemiologia — Indicadores de saúde</h3>
+      <table>
+        <tr><th>Indicador</th><th>Fórmula / Definição</th></tr>
+        <tr><td><strong>Coeficiente de mortalidade infantil (CMI)</strong></td><td>Óbitos &lt;1 ano / nascidos vivos × 1.000. Subdivisões: neonatal precoce (0–6d), neonatal tardio (7–27d), pós-neonatal (28–364d)</td></tr>
+        <tr><td><strong>Razão de mortalidade materna (RMM)</strong></td><td>Óbitos maternos (gravidez até 42d pós-parto) / nascidos vivos × 100.000</td></tr>
+        <tr><td><strong>Prevalência</strong></td><td>Casos EXISTENTES / população (foto). Aumenta com ↑incidência ou ↑duração</td></tr>
+        <tr><td><strong>Incidência</strong></td><td>Casos NOVOS / população em risco em dado tempo (filme)</td></tr>
+        <tr><td>Letalidade</td><td>Óbitos por causa X / total de casos de X. Mede <strong>gravidade</strong></td></tr>
+      </table>
+
+      <h3>Estudos epidemiológicos</h3>
+      <table>
+        <tr><th>Desenho</th><th>Pergunta</th><th>Medida</th><th>Nível evidência</th></tr>
+        <tr><td><strong>Ensaio clínico randomizado</strong></td><td>Intervenção funciona?</td><td>RR / RRR / NNT</td><td>Mais alto (IA)</td></tr>
+        <tr><td><strong>Coorte</strong></td><td>Exposição → desfecho?</td><td><strong>Risco relativo (RR)</strong></td><td>Alto (IIA)</td></tr>
+        <tr><td><strong>Caso-controle</strong></td><td>Desfecho ← exposição?</td><td><strong>Odds ratio (OR)</strong></td><td>Médio (IIB)</td></tr>
+        <tr><td><strong>Transversal</strong></td><td>Prevalência</td><td>Prevalência</td><td>Baixo</td></tr>
+        <tr><td><strong>Ecológico</strong></td><td>População (não indivíduo)</td><td>Correlação</td><td>Baixo (falácia ecológica)</td></tr>
+      </table>
+      <p class="src"><strong>RR &gt;1</strong> = exposição aumenta risco; <strong>OR &gt;1</strong> = associação positiva (eventos raros, OR ≈ RR). Sensibilidade = VP / (VP+FN); Especificidade = VN / (VN+FP). <strong>VPP depende da prevalência.</strong></p>
+
+      <h3>Níveis de prevenção (Leavell & Clark)</h3>
+      <table>
+        <tr><th>Nível</th><th>Fase</th><th>Exemplo</th></tr>
+        <tr><td><strong>Primária</strong></td><td>Promoção + proteção específica (pré-doença)</td><td>Vacinação, saneamento, MEV</td></tr>
+        <tr><td><strong>Secundária</strong></td><td>Diagnóstico precoce + tratamento imediato</td><td>Rastreio de CA, teste do pezinho</td></tr>
+        <tr><td><strong>Terciária</strong></td><td>Reabilitação, prevenir incapacidade</td><td>Fisioterapia pós-AVC, prótese</td></tr>
+        <tr><td><strong>Quaternária</strong></td><td>Prevenir iatrogenia / excesso médico</td><td>Evitar rastreio sem indicação (sobrediagnóstico)</td></tr>
+      </table>
+
+      <h3>Vigilância em Saúde</h3>
+      <table>
+        <tr><th>Tipo</th><th>Foco</th></tr>
+        <tr><td><strong>Epidemiológica</strong></td><td>Doenças, agravos, surtos (notificação compulsória). Doenças de <strong>notificação imediata (&lt;24h)</strong>: sarampo, raiva, cólera, febre amarela, botulismo, entre outras</td></tr>
+        <tr><td><strong>Sanitária</strong></td><td>Produtos, serviços, meio ambiente. Poder de polícia (ANVISA, VISA)</td></tr>
+        <tr><td><strong>Ambiental</strong></td><td>Fatores ambientais de risco (água, ar, vetores)</td></tr>
+        <tr><td><strong>Saúde do trabalhador</strong></td><td>Acidentes e doenças relacionadas ao trabalho</td></tr>
+      </table>
+
+      <h3>Atenção Primária (ESF)</h3>
+      <table>
+        <tr><th>Item</th><th>Fato de prova</th></tr>
+        <tr><td><strong>Atributos essenciais</strong></td><td>Acesso (1º contato), longitudinalidade, integralidade, coordenação do cuidado</td></tr>
+        <tr><td><strong>PNAB (2017)</strong></td><td>Equipe mínima: médico, enfermeiro, técnico/auxiliar enfermagem, ACS. Carga horária 40h. População adscrita 2.000–3.500 pessoas por equipe</td></tr>
+        <tr><td><strong>Princípio da APS</strong></td><td>Resolver ≥80% dos problemas de saúde da população. Porta de entrada preferencial</td></tr>
+        <tr><td><strong>NASF</strong></td><td>Apoio matricial (especialistas que apoiam as equipes, não porta de entrada direta)</td></tr>
+      </table>
+
+      <h3>Questões comentadas</h3>
+      <div class="q"><div class="stem">Q1. Qual princípio do SUS NÃO está na Lei 8080/90?</div><div class="alts">A) Universalidade · B) Integralidade · C) Participação social · D) Descentralização</div><div class="ans"><b>C.</b> Participação social veio na Lei 8142/90. A 8080 trata dos demais + regionalização, hierarquização e resolubilidade.</div></div>
+      <div class="q"><div class="stem">Q2. Estudo que parte da exposição e acompanha os participantes para verificar desfecho é:</div><div class="alts">A) Caso-controle · B) Transversal · C) Coorte · D) Ecológico</div><div class="ans"><b>C.</b> Coorte = exposição → desfecho, prospectivo, calcula risco relativo. Caso-controle vai do desfecho à exposição.</div></div>
+      <div class="q"><div class="stem">Q3. Vacinação é qual nível de prevenção?</div><div class="alts">A) Secundária · B) Terciária · C) Primária · D) Quaternária</div><div class="ans"><b>C.</b> Primária — proteção específica antes da doença. Secundária é detecção precoce (rastreio).</div></div>
+      <div class="q"><div class="stem">Q4. Em uma população de 100.000 habitantes, havia 500 casos de tuberculose em 1º de janeiro e 200 novos casos surgiram durante o ano. A prevalência em 1º de janeiro era:</div><div class="alts">A) 200/100.000 · B) 500/100.000 · C) 700/100.000 · D) 0,5%</div><div class="ans"><b>B.</b> Prevalência no ponto = casos existentes/população. Incidência seriam os 200 novos ao longo do ano.</div></div>
+      <div class="q"><div class="stem">Q5. Teste com sensibilidade 95% e especificidade 90%. Em população com baixa prevalência da doença, o que acontece com o VPP?</div><div class="alts">A) Fica próximo de 95% · B) Fica baixo (muitos falsos-positivos) · C) Não se altera · D) Fica igual à sensibilidade</div><div class="ans"><b>B.</b> VPP é fortemente dependente da prevalência. Baixa prevalência → mesmo com alta especificidade, VPP cai (muitos falsos-positivos entre os positivos totais).</div></div>
+      <div class="q"><div class="stem">Q6. 20 fumantes acompanhados 10 anos: 10 tiveram IAM. 80 não fumantes: 20 tiveram IAM. RR aproximado?</div><div class="alts">A) 0,5 · B) 1,0 · C) 2,0 · D) 4,0</div><div class="ans"><b>C.</b> Incidência fumantes = 10/20 = 0,50. Incidência não fumantes = 20/80 = 0,25. RR = 0,50/0,25 = 2,0 (fumantes têm o dobro de risco).</div></div>
+      <div class="q"><div class="stem">Q7. Qual indicador avalia gravidade de uma doença?</div><div class="alts">A) Prevalência · B) Incidência · C) Letalidade · D) Morbidade</div><div class="ans"><b>C.</b> Letalidade = óbitos/casos da doença. Mede a gravidade. Incidência mede frequência de casos novos.</div></div>
+      <div class="q"><div class="stem">Q8. Municípios devem aplicar, no mínimo, qual percentual da receita em saúde (EC 29)?</div><div class="alts">A) 10% · B) 12% · C) 15% · D) 18%</div><div class="ans"><b>C.</b> EC 29: União = variação nominal do PIB (depois IPCA pela LC 141), Estados = 12%, Municípios = 15%.</div></div>
+      <div class="q"><div class="stem">Q9. Atributo da APS que significa cuidado contínuo ao longo do tempo entre paciente e equipe:</div><div class="alts">A) Integralidade · B) Acesso · C) Longitudinalidade · D) Coordenação</div><div class="ans"><b>C.</b> Longitudinalidade = vínculo e cuidado mantido ao longo do tempo. Coordenação = integração entre níveis assistenciais.</div></div>
+      <div class="q"><div class="stem">Q10. A diferença fundamental entre Conselho e Conferência de Saúde é:</div><div class="alts">A) Conselho é deliberativo/permanente; Conferência é propositiva/quadrienal · B) Ambos são deliberativos · C) Conselho é consultivo e Conferência é deliberativa · D) Não há diferença</div><div class="ans"><b>A.</b> Conselho = permanente, deliberativo, 50% usuários. Conferência = convocada a cada 4 anos, propositiva (avalia e propõe diretrizes).</div></div>
+
+    </div>
+  </details>
+
+  <details id="apa-simulado">
+    <summary>Simulado misto — 30 questões comentadas <span class="status done">✓ feito</span></summary>
+    <div class="body">
+
+      <p class="src">30 questões mistas cobrindo todas as seções da APA. Usar como simulado final antes da prova.</p>
+
+      <h3>Bloco 1 — Materno-Infantil (10 questões)</h3>
+
+      <div class="q"><div class="stem">Q1. Gestante 28 sem, PA 150/100, proteinúria de fita 1+, sem sintomas. Classificação?</div><div class="alts">A) Pré-eclâmpsia grave · B) Pré-eclâmpsia sem sinais de gravidade · C) Hipertensão gestacional · D) HAS crônica</div><div class="ans"><b>B.</b> PA ≥140/90 após 20 sem + proteinúria, sem gravidade → pré-eclâmpsia. HAS gestacional seria sem proteinúria. Crônica seria antes de 20 sem.</div></div>
+
+      <div class="q"><div class="stem">Q2. Na profilaxia de pré-eclâmpsia em gestante de alto risco, qual dose de AAS o SUS recomenda?</div><div class="alts">A) 81 mg · B) 100 mg à noite · C) 150 mg · D) 200 mg</div><div class="ans"><b>B.</b> Brasil/SUS = AAS 100 mg à noite, da 12ª à 36ª sem. ACOG usa 81mg; FIGO 150mg. Reconhecer a divergência é ponto de prova.</div></div>
+
+      <div class="q"><div class="stem">Q3. Recém-nascido com icterícia surgindo com 16h de vida, mãe O Rh negativo, Coombs direto positivo. Qual a causa mais provável?</div><div class="alts">A) Fisiológica · B) Incompatibilidade ABO · C) Atresia de vias biliares · D) Leite materno</div><div class="ans"><b>B.</b> Icterícia <24h é patológica. Coombs direto positivo + mãe O = incompatibilidade ABO (mais comum que Rh nos dias atuais, com profilaxia).</div></div>
+
+      <div class="q"><div class="stem">Q4. TOTG 75g na 26ª sem: jejum 88, 1h 190, 2h 160. Diagnóstico?</div><div class="alts">A) Normal · B) DMG (valor de 1h alterado) · C) DM prévio · D) Repetir o teste</div><div class="ans"><b>B.</b> 1 valor ≥180 na 1ª hora já fecha DMG. 2ª hora ≥153 também fecha sozinho. Jejum normal não afasta.</div></div>
+
+      <div class="q"><div class="stem">Q5. Lactente 4 meses, diarreia há 3 dias, sinal da prega, olhos encovados, irritado, bebe avidamente. Plano de hidratação?</div><div class="alts">A) Plano A domiciliar · B) Plano B (SRO 75 mL/kg em 4h na unidade) · C) Plano C (HV) · D) Sintomáticos apenas</div><div class="ans"><b>B.</b> Dois sinais de desidratação (prega e olhos encovados) + bebe avidamente = desidratação moderada → Plano B (TRO supervisionada 75 mL/kg + zinco).</div></div>
+
+      <div class="q"><div class="stem">Q6. Sangramento vaginal vermelho-vivo, indolor, 3º trimestre, útero relaxado, sem sofrimento fetal. Principal hipótese?</div><div class="alts">A) DPP · B) Placenta prévia · C) Trabalho de parto prematuro · D) Rotura uterina</div><div class="ans"><b>B.</b> Indolor + tônus normal + sangue vivo = placenta prévia. DPP é doloroso com hipertonia. Confirmar com USG. NÃO fazer toque vaginal até descartar prévia.</div></div>
+
+      <div class="q"><div class="stem">Q7. Corrimento branco-grumoso, prurido vulvar intenso, pH vaginal 4,0. Agente?</div><div class="alts">A) Gardnerella · B) Candida · C) Trichomonas · D) Chlamydia</div><div class="ans"><b>B.</b> Branco grumoso + prurido + pH baixo (<4,5) = candidíase. Vaginose tem pH alto e odor; tricomoníase é bolhoso amarelo-esverdeado.</div></div>
+
+      <div class="q"><div class="stem">Q8. Qual o método PRIMÁRIO de rastreio do câncer de colo do útero no SUS, segundo as novas diretrizes (2024/2025)?</div><div class="alts">A) Citologia oncótica · B) Colposcopia · C) Teste DNA-HPV · D) Captura híbrida</div><div class="ans"><b>C.</b> DNA-HPV virou o método primário oficial, triagem aos 25 anos, intervalo 5 anos se negativo. Citologia vira reflexa (HPV+ não 16/18).</div></div>
+
+      <div class="q"><div class="stem">Q9. Puérpera, parto vaginal há 2h, sangramento aumentado, útero amolecido acima da cicatriz umbilical. 1ª conduta?</div><div class="alts">A) Ocitocina IM · B) Massagem uterina + ocitocina IV · C) Histerectomia · D) Ácido tranexâmico isolado</div><div class="ans"><b>B.</b> Atonia = 1ª causa de HPP. Conduta: massagem uterina bimanual + ocitocina. Depois ATX, misoprostol, balão de Bakri.</div></div>
+
+      <div class="q"><div class="stem">Q10. Pré-eclâmpsia grave com convulsão tônico-clônica. Droga de escolha e por quanto tempo manter?</div><div class="alts">A) Diazepam até 6h pós-parto · B) Fenitoína 24h · C) Sulfato de magnésio, 24h após parto ou última crise · D) Haloperidol até alta</div><div class="ans"><b>C.</b> MgSO₄ (esquema Zuspan ou Pritchard). Manter 24h pós-parto ou pós-última crise. Antídoto: gluconato de cálcio.</div></div>
+
+      <h3>Bloco 2 — Clínica ampla (8 questões)</h3>
+
+      <div class="q"><div class="stem">Q11. Homem 55a DM2 há 10 anos, PA 148/94, creatinina 1,6, albuminúria. Qual anti-hipertensivo tem benefício adicional de nefroproteção?</div><div class="alts">A) Hidroclorotiazida · B) IECA ou BRA · C) Anlodipino · D) Propranolol</div><div class="ans"><b>B.</b> IECA/BRA reduzem proteinúria e retardam progressão da DRC, especialmente em diabéticos. Tiazídico tem efeito neutro; BCC não tem nefroproteção comprovada.</div></div>
+
+      <div class="q"><div class="stem">Q12. Paciente com IAMCSST, transferência para hemodinâmica estimada em 3h. Conduta?</div><div class="alts">A) Aguardar transferência · B) Fibrinólise imediata · C) Dupla antiagregação e aguardar · D) Alta com beta-bloqueador</div><div class="ans"><b>B.</b> Se ICP >120 min, fibrinolítico ≤30 min (se <12h do início). Janela ideal: até 12h do início da dor.</div></div>
+
+      <div class="q"><div class="stem">Q13. DPOC: qual a única medida que comprovadamente reduz mortalidade?</div><div class="alts">A) Corticoide inalatório · B) LABA · C) Cessação do tabagismo + O₂ domiciliar se indicação · D) LAMA</div><div class="ans"><b>C.</b> Cessar tabagismo + O₂ domiciliar (PaO₂ ≤55 ou SaO₂ ≤88%) são as únicas medidas que ↓mortalidade. Broncodilatadores aliviam sintomas; CI reduz exacerbações.</div></div>
+
+      <div class="q"><div class="stem">Q14. Diagnóstico de DM2: qual valor isolado NÃO fecha diagnóstico?</div><div class="alts">A) Jejum 128 mg/dL (repetido) · B) TOTG 2h 210 · C) HbA1c 7,2% · D) Glicemia aleatória 160 com poliúria</div><div class="ans"><b>D.</b> Aleatória precisa ≥200 + sintomas. Jejum ≥126, TOTG ≥200, HbA1c ≥6,5% fecham (2 testes ou 1 + sintomas claros).</div></div>
+
+      <div class="q"><div class="stem">Q15. Qual classe NÃO é pilar da ICFEr para redução de mortalidade?</div><div class="alts">A) IECA/BRA ou sacubitril-valsartana · B) Betabloqueador · C) Furosemida · D) Espironolactona</div><div class="ans"><b>C.</b> Os 4 pilares: IECA/BRA/INRA + betabloqueador + ARM + iSGLT2. Furosemida trata congestão, não reduz mortalidade.</div></div>
+
+      <div class="q"><div class="stem">Q16. Paciente com dengue, 5º dia, queda da febre, dor abdominal intensa e hematócrito em elevação. Classificação?</div><div class="alts">A) Grupo A · B) Grupo B · C) Grupo C (sinais de alarme) · D) Grupo D</div><div class="ans"><b>C.</b> Defervescência + sinais de alarme (dor abdominal + ↑hematócrito) = Grupo C. Internação com hidratação IV. Grupo D é choque/disfunção orgânica.</div></div>
+
+      <div class="q"><div class="stem">Q17. Asma: segundo GINA, qual a medicação de resgate preferencial atual?</div><div class="alts">A) Salbutamol isolado · B) CI-formoterol dose baixa · C) Ipratrópio · D) Corticoide oral</div><div class="ans"><b>B.</b> CI-formoterol sob demanda substitui SABA isolado em todas as etapas. Reduz risco de exacerbação grave.</div></div>
+
+      <div class="q"><div class="stem">Q18. CURB-65: idoso 72a, confuso, ureia 55, FR 24, PA 125/80. Escore e conduta?</div><div class="alts">A) 2, ambulatorial · B) 3, internação · C) 4, internação e avaliar UTI · D) 1, observação</div><div class="ans"><b>B.</b> Confusão (1) + ureia >50 (1) + idade ≥65 (1) = 3. FR 24 não pontua (≥30 pontuaria). Escore 3 → internação hospitalar.</div></div>
+
+      <h3>Bloco 3 — Cirurgia e Urgências (7 questões)</h3>
+
+      <div class="q"><div class="stem">Q19. Abdome agudo: dor em FID, Blumberg+, leucocitose, início epigástrico. Principal hipótese?</div><div class="alts">A) Colecistite · B) Apendicite · C) Diverticulite · D) Pancreatite</div><div class="ans"><b>B.</b> Migração epigástrio → FID + Blumberg é clássico de apendicite. Colecistite é em HCD; diverticulite em >50a e FIE.</div></div>
+
+      <div class="q"><div class="stem">Q20. Politraumatizado: MV abolido à direita, desvio de traqueia para esquerda, turgência jugular, hipotensão. Diagnóstico e conduta imediata?</div><div class="alts">A) Hemotórax / drenagem torácica · B) Pneumotórax hipertensivo / toracocentese descompressiva · C) Tamponamento / pericardiocentese · D) Contusão pulmonar / IOT</div><div class="ans"><b>B.</b> Clínica clássica de pneumotórax hipertensivo. Toracocentese com agulha no 2º EIC LHC (ou 5º EIC LAA). Depois drenagem torácica. Não esperar RX.</div></div>
+
+      <div class="q"><div class="stem">Q21. Queimadura: paciente 60kg, 40% SCQ. Volume nas primeiras 8h pela fórmula de Parkland?</div><div class="alts">A) 2.400 mL · B) 4.800 mL · C) 7.200 mL · D) 9.600 mL</div><div class="ans"><b>B.</b> Parkland = 4 × kg × %SCQ = 4 × 60 × 40 = 9.600 mL/24h. Metade (4.800 mL) nas 1ªs 8h a partir da hora da queimadura.</div></div>
+
+      <div class="q"><div class="stem">Q22. Colecistite aguda: exame de imagem de escolha e janela ideal para cirurgia?</div><div class="alts">A) RX simples / eletiva em 6 semanas · B) USG / colecistectomia precoce ≤72h · C) TC / imediata · D) RM / após ATB 7 dias</div><div class="ans"><b>B.</b> USG é o exame de escolha (parede >4mm, líquido, Murphy sonográfico). Cirurgia precoce (≤72h do início) + ATB. Aguardar 6 sem é para casos graves/contraindicados.</div></div>
+
+      <div class="q"><div class="stem">Q23. Qual a diferença anatômica entre hérnia inguinal indireta e direta?</div><div class="alts">A) Tamanho do saco herniário · B) Relação com os vasos epigástricos inferiores · C) Idade do paciente · D) Tipo de conteúdo</div><div class="ans"><b>B.</b> Indireta = lateral aos vasos epigástricos (congênita). Direta = medial (adquirida). Clássico de anatomia cirúrgica.</div></div>
+
+      <div class="q"><div class="stem">Q24. Tríade de Beck (tamponamento cardíaco) inclui:</div><div class="alts">A) Hipotensão + turgência jugular + hipofonese de bulhas · B) Febre + sopro + petéquias · C) Dor + dispneia + síncope · D) Cianose + baqueteamento + sopro</div><div class="ans"><b>A.</b> Beck = hipotensão + turgência + bulhas hipofonéticas. FAST confirma líquido pericárdico. Pericardiocentese descompressiva.</div></div>
+
+      <div class="q"><div class="stem">Q25. Paciente politraumatizado, GCS 7, respiração ruidosa. Primeira conduta?</div><div class="alts">A) TC de crânio imediata · B) Intubação orotraqueal + proteção cervical · C) Manitol EV · D) Posição de recuperação</div><div class="ans"><b>B.</b> A do ABCDE = via aérea. GCS ≤8 = IOT. Colar cervical sempre. Só depois avaliar B, C, D, E. Manitol é para HIC confirmada.</div></div>
+
+      <h3>Bloco 4 — Saúde Coletiva (5 questões)</h3>
+
+      <div class="q"><div class="stem">Q26. A participação da comunidade no SUS foi instituída por qual lei?</div><div class="alts">A) Lei 8080/90 · B) Lei 8142/90 · C) Constituição Federal · D) NOB 96</div><div class="ans"><b>B.</b> A 8142/90 criou os conselhos e conferências e regulamentou as transferências intergovernamentais. A 8080 é a lei orgânica mas não trata de participação social.</div></div>
+
+      <div class="q"><div class="stem">Q27. Estudo em que o pesquisador seleciona pacientes com e sem a doença e investiga exposição prévia é:</div><div class="alts">A) Coorte · B) Ensaio clínico · C) Caso-controle · D) Ecológico</div><div class="ans"><b>C.</b> Caso-controle = desfecho → exposição (retrospectivo). Medida: odds ratio. Coorte = exposição → desfecho (risco relativo).</div></div>
+
+      <div class="q"><div class="stem">Q28. Razão de mortalidade materna (RMM): numerador e denominador?</div><div class="alts">A) Óbitos maternos / população feminina · B) Óbitos maternos / nascidos vivos × 100.000 · C) Óbitos <1 ano / nascidos vivos · D) Óbitos maternos / óbitos totais</div><div class="ans"><b>B.</b> RMM = óbitos maternos (gestação até 42d pós-parto) / nascidos vivos × 100.000. É razão, não coeficiente (denominador = nascidos vivos, não mulheres em idade fértil).</div></div>
+
+      <div class="q"><div class="stem">Q29. Percentual mínimo que os municípios devem aplicar em ações e serviços de saúde?</div><div class="alts">A) 10% · B) 12% · C) 15% · D) 25%</div><div class="ans"><b>C.</b> EC 29/2000: União = IPCA; Estados = 12%; Municípios = 15% da receita de impostos.</div></div>
+
+      <div class="q"><div class="stem">Q30. Qual atributo da APS significa que a equipe é a porta de entrada preferencial e resolve ≥80% dos problemas?</div><div class="alts">A) Longitudinalidade · B) Integralidade · C) Acesso (primeiro contato) · D) Competência cultural</div><div class="ans"><b>C.</b> Acesso/primeiro contato = porta de entrada, acessível, resolve a maioria. Longitudinalidade = cuidado ao longo do tempo; integralidade = gama de serviços.</div></div>
+
+    </div>
+  </details>
+</div>
+
+<!-- ====================== OSCE ====================== -->
+<div class="block osce">
+  <h2>OSCE — Materno-Infantil (10/06) · prioridade 2 · estações práticas</h2>
+
+  <details id="osce-gineco">
+    <summary>Estação Ginecologia — roteiro + checklist do avaliador <span class="status done">✓ feito</span></summary>
+    <div class="body">
+      <p class="src">8 min execução + 2 min feedback. Sempre: apresentar-se, lavar as mãos/EPI, consentir, privacidade, comunicação empática. Calibrado em FEBRASGO / INCA-MS 2024-2025.</p>
+
+      <h3>Roteiro genérico de estação (vale pras 3)</h3>
+      <table>
+        <tr><th>Etapa</th><th>O que o avaliador pontua</th></tr>
+        <tr><td>Abertura</td><td>Identifica-se, confirma nome do paciente, higieniza as mãos, pede consentimento</td></tr>
+        <tr><td>Anamnese dirigida</td><td>Queixa, HMA, antecedentes relevantes ao caso, sem perguntas irrelevantes</td></tr>
+        <tr><td>Exame/procedimento</td><td>Técnica correta na ordem certa, verbaliza achados</td></tr>
+        <tr><td>Conduta</td><td>Hipótese + plano calibrado em diretriz brasileira</td></tr>
+        <tr><td>Comunicação</td><td>Linguagem acessível, acolhe, confirma entendimento</td></tr>
+      </table>
+
+      <h3>Checklist — Anamnese ginecológica</h3>
+      <table>
+        <tr><th>Item</th><th>Sim/Não</th></tr>
+        <tr><td>Idade da menarca, ciclo (DUM, regularidade, fluxo, dismenorreia)</td><td></td></tr>
+        <tr><td>Vida sexual, nº de parceiros, método contraceptivo atual</td><td></td></tr>
+        <tr><td>História obstétrica (G_P_A_), partos, abortos</td><td></td></tr>
+        <tr><td>Rastreios: data da última citologia/DNA-HPV e mamografia</td><td></td></tr>
+        <tr><td>Sintomas: corrimento, sangramento anormal, dor pélvica, dispareunia</td><td></td></tr>
+        <tr><td>Antecedentes: IST, cirurgias, ISTs, história familiar de CA mama/ovário</td><td></td></tr>
+      </table>
+
+      <h3>Checklist — Exame clínico das mamas</h3>
+      <table>
+        <tr><th>Item</th><th>Pontua</th></tr>
+        <tr><td>Inspeção estática e dinâmica (braços ao lado, elevados, mãos na cintura)</td><td>retração, abaulamento, alteração de pele/papila</td></tr>
+        <tr><td>Palpação sistemática dos 4 quadrantes + prolongamento axilar + papila</td><td>com a polpa digital, paciente sentada e deitada</td></tr>
+        <tr><td>Palpação de linfonodos axilares e supraclaviculares</td><td></td></tr>
+        <tr><td>Expressão da papila (descarga?)</td><td></td></tr>
+        <tr><td>Descreve nódulo: localização, tamanho, consistência, mobilidade</td><td>endurecido/fixo/irregular = suspeito (BI-RADS)</td></tr>
+      </table>
+      <p class="src"><b>Rastreio mama (divergência — citar a banca):</b> MS/INCA = mamografia bienal 50-69 anos. FEBRASGO/SBM = anual a partir dos 40. <span class="verify">VERIFICAR qual a UNEXMED adota.</span></p>
+
+      <h3>Checklist — Coleta de citologia oncótica</h3>
+      <table>
+        <tr><th>Passo</th></tr>
+        <tr><td>Posição ginecológica, foco de luz, material disposto (espéculo, espátula de Ayre, escova endocervical, lâmina/meio líquido)</td></tr>
+        <tr><td>Introduz espéculo sem lubrificante, visualiza colo e JEC</td></tr>
+        <tr><td>Ectocérvice com espátula de Ayre (rotação 360°) + endocérvice com escova</td></tr>
+        <tr><td>Fixa a lâmina imediatamente (ou frasco de meio líquido)</td></tr>
+        <tr><td>Identifica a lâmina e preenche requisição</td></tr>
+      </table>
+      <p class="src"><b>Rastreio colo — NOVO padrão oficial (2024/2025):</b> teste <b>DNA-HPV</b> é o método primário, início aos <b>25 anos</b>, intervalo <b>5 anos</b> se negativo. HPV 16/18 → colposcopia; outros oncogênicos → citologia reflexa. Regra antiga (ainda válida onde DNA-HPV não chegou): citologia 25-64, trienal após 2 anuais normais. (INCA/MS, DOU 18/08/2025)</p>
+
+      <h3>Checklist — Aconselhamento contraceptivo</h3>
+      <table>
+        <tr><th>Item</th></tr>
+        <tr><td>Investiga critérios de elegibilidade (OMS): tabagismo + idade >35, HAS, TVP, enxaqueca com aura, amamentação</td></tr>
+        <tr><td>Explica opções (combinado oral, progestágeno, DIU cobre/hormonal, implante, injetável, barreira)</td></tr>
+        <tr><td>Decisão compartilhada conforme desejo reprodutivo e contraindicações</td></tr>
+        <tr><td>Orienta dupla proteção (preservativo p/ IST)</td></tr>
+      </table>
+      <p class="src"><b>Pega de prova:</b> estrogênio é contraindicado em fumante >35 anos, enxaqueca com aura, TVP/TEP prévia, HAS não controlada, pós-parto <6 sem amamentando. Nesses casos → método só de progestágeno ou DIU.</p>
+    </div>
+  </details>
+
+  <details id="osce-obs">
+    <summary>Estação Obstetrícia — Leopold/AU/BCF, pré-natal, partograma <span class="status done">✓ feito</span></summary>
+    <div class="body">
+      <p class="src">Calibrado em Guia de Pré-natal na APS (MS 2024), CAB 32 e Protocolo SHEG FEBRASGO 2023.</p>
+
+      <h3>Checklist — Manobras de Leopold (4 tempos)</h3>
+      <table>
+        <tr><th>Tempo</th><th>O que avalia</th></tr>
+        <tr><td>1º — fundo uterino</td><td>O que ocupa o fundo (pólo cefálico = duro/regular; pélvico = amolecido/irregular)</td></tr>
+        <tr><td>2º — laterais</td><td>Situação e posição: dorso (superfície lisa) de um lado, membros do outro</td></tr>
+        <tr><td>3º — hipogástrio (Pawlik)</td><td>Apresentação e se está insinuada (mobilidade do pólo)</td></tr>
+        <tr><td>4º — escava</td><td>Grau de descida/insinuação da apresentação</td></tr>
+      </table>
+
+      <h3>Checklist — Medida da altura uterina (AU) e BCF</h3>
+      <table>
+        <tr><th>Item</th></tr>
+        <tr><td>Fita do bordo superior da sínfise púbica ao fundo uterino (paciente em decúbito)</td></tr>
+        <tr><td>Correlaciona AU × idade gestacional (entre 20-34 sem, AU em cm ≈ IG em semanas)</td></tr>
+        <tr><td>BCF com sonar/Pinard no foco máximo (dorso fetal); normal 110-160 bpm</td></tr>
+        <tr><td>Conta por 1 min, diferencia do pulso materno</td></tr>
+      </table>
+      <p class="src"><b>Pega:</b> AU muito maior que a IG → polidrâmnio, macrossomia, gemelar, erro de DUM. Menor → CIUR, oligoâmnio, óbito fetal.</p>
+
+      <h3>Checklist — Consulta de pré-natal</h3>
+      <table>
+        <tr><th>Item</th></tr>
+        <tr><td>Confirma IG (DUM + USG precoce), calcula DPP (regra de Näegele: DUM + 7 dias − 3 meses)</td></tr>
+        <tr><td>PA, peso/IMC, edema, queixas; AU, BCF, movimentação fetal, situação/apresentação</td></tr>
+        <tr><td>Revisa exames de rotina por trimestre e vacinas (dTpa a partir de 20 sem, hepatite B, influenza)</td></tr>
+        <tr><td>Suplementação: ácido fólico 400 µg (pré-concepção até 12 sem) + ferro</td></tr>
+        <tr><td>Orienta sinais de alarme (sangramento, perda de líquido, ↓movimentos, cefaleia/escotomas)</td></tr>
+      </table>
+      <p class="src"><b>Mínimo 6 consultas</b> (1 no 1º tri, 2 no 2º, 3 no 3º) — CAB 32 / Guia APS 2024. <b>Profilaxia de pré-eclâmpsia (alto risco):</b> AAS 100 mg à noite (12ª→36ª sem) + cálcio. (ACOG 81mg / FIGO 150mg — divergência de dose.)</p>
+
+      <h3>Checklist — Interpretação do partograma</h3>
+      <table>
+        <tr><th>Conceito</th><th>O que reconhecer</th></tr>
+        <tr><td>Fase ativa</td><td>≥5-6 cm de dilatação com contrações regulares</td></tr>
+        <tr><td>Linha de alerta / ação</td><td>Cruzar a linha de alerta → reavaliar; linha de ação → intervir</td></tr>
+        <tr><td>Parada de dilatação</td><td>Sem progressão por ≥2h na fase ativa → avaliar distocia</td></tr>
+        <tr><td>Parada de descida</td><td>Apresentação não desce apesar de boa dinâmica → desproporção</td></tr>
+        <tr><td>Curva de Friedman</td><td>Registra dilatação (○) e descida (●) ao longo do tempo</td></tr>
+      </table>
+
+      <p class="src"><b>Emergências que podem cair na estação:</b> pré-eclâmpsia grave (PA ≥160/110 → anti-hipertensivo + MgSO₄), DPP (dor + hipertonia + sangue escuro + sofrimento), placenta prévia (sangue vivo indolor, <b>não tocar</b>), HPP por atonia (massagem + ocitocina; os 4 T = Tônus, Trauma, Tecido, Trombina).</p>
+    </div>
+  </details>
+
+  <details id="osce-ped">
+    <summary>Estação Pediatria — puericultura, hidratação, vacinação, comunicação <span class="status done">✓ feito</span></summary>
+    <div class="body">
+      <p class="src">Calibrado em Tratado de Pediatria SBP 6ª ed., calendário PNI 2025/26 e fluxograma de diarreia MS/SBP.</p>
+
+      <h3>Checklist — Anamnese pediátrica + puericultura</h3>
+      <table>
+        <tr><th>Item</th></tr>
+        <tr><td>Identificação, idade exata, quem é o acompanhante; queixa pela ótica do cuidador</td></tr>
+        <tr><td>História gestacional, parto, peso ao nascer, triagens neonatais</td></tr>
+        <tr><td>Aleitamento (exclusivo até 6 m, complementado até ≥2 anos), alimentação atual</td></tr>
+        <tr><td>Plota peso/estatura/PC na caderneta; avalia curva de crescimento</td></tr>
+        <tr><td>Avalia marcos do desenvolvimento; revê vacinação na caderneta</td></tr>
+      </table>
+      <table>
+        <tr><th>Marco motor</th><th>Idade</th></tr>
+        <tr><td>Sustenta a cabeça</td><td>~3 meses</td></tr>
+        <tr><td>Senta sem apoio</td><td>~9 meses (rola ~6m)</td></tr>
+        <tr><td>Anda com apoio + primeiras palavras</td><td>~12 meses</td></tr>
+        <tr><td>Anda sozinho</td><td>~15 meses</td></tr>
+      </table>
+
+      <h3>Checklist — Avaliação e hidratação na diarreia (TRO)</h3>
+      <table>
+        <tr><th>Plano</th><th>Quando</th><th>Conduta</th></tr>
+        <tr><td>A</td><td>Sem desidratação</td><td>SRO após cada evacuação em casa + manter alimentação/aleitamento + zinco</td></tr>
+        <tr><td>B</td><td>Desidratação (≥2 sinais: prega, olhos fundos, sede/bebe avidamente, irritado)</td><td>SRO 75 mL/kg em 4h na unidade, supervisionado + zinco</td></tr>
+        <tr><td>C</td><td>Desidratação grave (letárgico, não bebe, prega muito lenta, choque)</td><td>Hidratação venosa imediata (SF/RL), expansão</td></tr>
+      </table>
+      <p class="src"><b>Zinco</b> 10-14 dias: 10 mg/dia ≤6 meses; 20 mg/dia >6 m-5 anos. Reduz duração e recidiva. (MS/SBP)</p>
+
+      <h3>Checklist — Vacinação (PNI)</h3>
+      <table>
+        <tr><th>Idade</th><th>Vacinas</th></tr>
+        <tr><td>Ao nascer</td><td>BCG + Hepatite B</td></tr>
+        <tr><td>2 / 4 / 6 meses</td><td>Pentavalente, VIP (pólio), Pneumo-10, Rotavírus (2/4m)*, MenC (3/5m)</td></tr>
+        <tr><td>9 / 12 / 15 meses</td><td>Febre amarela (9m); Tríplice viral + Pneumo + MenC reforço (12m); DTP + Hep A + tetra viral (15m)</td></tr>
+        <tr><td>4 anos</td><td>Reforço DTP + VIP + febre amarela + varicela</td></tr>
+      </table>
+      <p class="src">*<b>Rotavírus — janelas absolutas:</b> 1ª dose 1m15d-3m15d, 2ª até 7m29d. Perdeu a janela, perdeu a dose. <b>Dois calendários:</b> banca "oficial/SUS" → PNI; "mais atual/completo" → SBP (inclui Qdenga, VSR/Nirsevimabe). Novidade 2025/26: proteção VSR (Abrysvo na gestante OU Nirsevimabe no bebê). <span class="verify">VERIFICAR datas exatas no calendário PNI vigente.</span></p>
+
+      <h3>Checklist — Comunicação com o cuidador (pontua muito no OSCE)</h3>
+      <table>
+        <tr><th>Item</th></tr>
+        <tr><td>Linguagem simples, sem jargão; confirma o entendimento ("o que a senhora entendeu?")</td></tr>
+        <tr><td>Acolhe a preocupação, valida sentimentos, não culpabiliza</td></tr>
+        <tr><td>Orienta sinais de alarme para retorno (recusa alimentar, vômitos, prostração, febre persistente, sangue nas fezes)</td></tr>
+        <tr><td>Combina retorno/reavaliação e pergunta se há dúvidas</td></tr>
+      </table>
+      <p class="src"><b>Taquipneia (OMS) — corte por idade:</b> <2m ≥60; 2-12m ≥50; 1-5a ≥40 irpm (sinal de pneumonia). <b>Icterícia neonatal sempre patológica se início <24h de vida.</b></p>
+    </div>
+  </details>
+</div>
+
+<!-- ====================== ATI ====================== -->
+<div class="block ati">
+  <h2>ATI — Materno-Infantil (19/06) · prioridade 3 · teórico</h2>
+
+  <details id="ati-gineco">
+    <summary>Ginecologia — 10 questões comentadas <span class="status done">✓ feito</span></summary>
+    <div class="body">
+      <p class="src">Calibrado em FEBRASGO e Diretrizes INCA/MS de rastreamento (2024/2025).</p>
+
+      <div class="q"><div class="stem">Q1. Segundo as diretrizes brasileiras de 2024/2025, qual o método PRIMÁRIO de rastreio do câncer de colo do útero?</div><div class="alts">A) Citologia oncótica trienal · B) Teste de DNA-HPV · C) Colposcopia · D) Inspeção visual com ácido acético</div><div class="ans"><b>B.</b> O DNA-HPV passou a ser o método primário: início aos 25 anos, intervalo de 5 anos se negativo. Citologia vira reflexa nos HPV+ não 16/18. A regra antiga (citologia 25-64 trienal) ainda vale onde o DNA-HPV não foi implantado.</div></div>
+
+      <div class="q"><div class="stem">Q2. Corrimento acinzentado, fino, odor de peixe que piora após o coito, pH 5,0, clue cells. Diagnóstico e tratamento?</div><div class="alts">A) Candidíase / fluconazol · B) Vaginose bacteriana / metronidazol · C) Tricomoníase / nistatina · D) Cervicite / penicilina</div><div class="ans"><b>B.</b> Critérios de Amsel (≥3): corrimento acinzentado, pH >4,5, whiff test +, clue cells = vaginose por Gardnerella. Tratamento: metronidazol. Não é IST.</div></div>
+
+      <div class="q"><div class="stem">Q3. Corrimento branco grumoso ("leite coalhado"), prurido vulvar intenso, pH 4,0. Agente mais provável?</div><div class="alts">A) Gardnerella vaginalis · B) Candida albicans · C) Trichomonas vaginalis · D) Chlamydia trachomatis</div><div class="ans"><b>B.</b> Branco grumoso + prurido + pH baixo (<4,5) = candidíase. Tratamento antifúngico (azólico). Vaginose tem pH alto; tricomoníase é corrimento amarelo-esverdeado bolhoso com colo em framboesa.</div></div>
+
+      <div class="q"><div class="stem">Q4. Mulher 30a, fumante (15 cig/dia), deseja contracepção. Qual método é CONTRAINDICADO?</div><div class="alts">A) DIU de cobre · B) Anticoncepcional combinado oral (com estrogênio) · C) Implante de etonogestrel · D) Pílula só de progestágeno</div><div class="ans"><b>B.</b> Estrogênio é contraindicado em fumantes ≥35 anos (risco tromboembólico) — mas a banca também cobra tabagismo pesado. Em dúvida, métodos só de progestágeno ou DIU são seguros. (Critérios de elegibilidade OMS)</div></div>
+
+      <div class="q"><div class="stem">Q5. Sangramento uterino anormal em mulher de 58 anos, menopausada há 6 anos. Primeira conduta para investigação?</div><div class="alts">A) Tranquilizar, é fisiológico · B) USG transvaginal + avaliação do endométrio (biópsia se espessado) · C) Iniciar TRH · D) Histerectomia imediata</div><div class="ans"><b>B.</b> Sangramento na pós-menopausa é câncer de endométrio até prova em contrário. USG-TV: endométrio >4-5 mm → biópsia/histeroscopia. Nunca tranquilizar sem investigar.</div></div>
+
+      <div class="q"><div class="stem">Q6. Adolescente com amenorreia primária aos 16 anos, caracteres sexuais secundários presentes. Primeiro exame?</div><div class="alts">A) Cariótipo · B) Teste de gravidez (β-hCG) · C) RM de sela túrcica · D) Dosagem de testosterona</div><div class="ans"><b>B.</b> Sempre afastar gravidez primeiro em qualquer amenorreia. Depois investigar eixo (FSH/LH, prolactina, TSH) e anatomia.</div></div>
+
+      <div class="q"><div class="stem">Q7. Dor pélvica + febre + dor à mobilização do colo + corrimento purulento em mulher sexualmente ativa. Diagnóstico?</div><div class="alts">A) Endometriose · B) Doença inflamatória pélvica (DIP) · C) Cisto ovariano · D) Gravidez ectópica</div><div class="ans"><b>B.</b> Critérios mínimos de DIP: dor à mobilização do colo OU dor anexial OU dor uterina. Tratar empiricamente (ceftriaxona + doxiciclina ± metronidazol). Agentes: gonococo e clamídia.</div></div>
+
+      <div class="q"><div class="stem">Q8. Sobre o rastreio do câncer de mama, qual a recomendação do Ministério da Saúde/INCA?</div><div class="alts">A) Mamografia anual a partir dos 40 · B) Mamografia bienal dos 50 aos 69 anos · C) USG anual dos 35 aos 50 · D) Autoexame mensal como rastreio</div><div class="ans"><b>B.</b> MS/INCA = mamografia bienal 50-69. FEBRASGO/SBM divergem: anual a partir dos 40. <span class="verify">VERIFICAR o que a banca adota.</span> Autoexame não é método de rastreio populacional.</div></div>
+
+      <div class="q"><div class="stem">Q9. Mulher 28a, atraso menstrual, dor pélvica unilateral, β-hCG positivo, USG sem saco gestacional intrauterino. Diagnóstico?</div><div class="alts">A) Aborto completo · B) Gravidez ectópica · C) Gestação tópica inicial · D) Mola hidatiforme</div><div class="ans"><b>B.</b> Tríade: atraso + dor + sangramento, com β-hCG+ e útero vazio = ectópica (tubária mais comum). Conduta: metotrexato se estável e critérios; cirurgia se rota/instável.</div></div>
+
+      <div class="q"><div class="stem">Q10. Citologia com células escamosas atípicas e teste DNA-HPV positivo para o tipo 16. Conduta?</div><div class="alts">A) Repetir citologia em 3 anos · B) Colposcopia · C) Histerectomia · D) Apenas observação</div><div class="ans"><b>B.</b> HPV 16/18 positivo → colposcopia direta (alto risco oncogênico). Outros tipos oncogênicos → citologia reflexa antes da colposcopia.</div></div>
+    </div>
+  </details>
+
+  <details id="ati-obs">
+    <summary>Obstetrícia — 10 questões comentadas <span class="status done">✓ feito</span></summary>
+    <div class="body">
+      <p class="src">Calibrado em Protocolo SHEG FEBRASGO 2023, Guia de Pré-natal MS 2024 e diretriz SBD 2025 (DMG).</p>
+
+      <div class="q"><div class="stem">Q1. Gestante de 30 sem, PA 150/100, proteinúria de fita 1+, sem sintomas. Classificação?</div><div class="alts">A) Hipertensão gestacional · B) Pré-eclâmpsia sem sinais de gravidade · C) Pré-eclâmpsia grave · D) HAS crônica</div><div class="ans"><b>B.</b> PA ≥140/90 após 20 sem + proteinúria, sem critérios de gravidade = pré-eclâmpsia. HAS gestacional não tem proteinúria; grave seria ≥160/110 ou disfunção orgânica.</div></div>
+
+      <div class="q"><div class="stem">Q2. Gestante com pré-eclâmpsia grave evolui com crise convulsiva tônico-clônica. Droga de escolha?</div><div class="alts">A) Diazepam · B) Fenitoína · C) Sulfato de magnésio · D) Haloperidol</div><div class="ans"><b>C.</b> MgSO₄ (Zuspan 4g ataque + 1g/h, ou Pritchard) é a droga da eclâmpsia. Manter 24h após o parto ou a última crise. Antídoto: gluconato de cálcio.</div></div>
+
+      <div class="q"><div class="stem">Q3. TOTG 75g na 26ª semana: jejum 95, 1h 175, 2h 140 mg/dL. Diagnóstico?</div><div class="alts">A) Normal · B) Diabetes mellitus gestacional · C) DM franco · D) Repetir o exame</div><div class="ans"><b>B.</b> Cortes do DMG: jejum ≥92, 1h ≥180, 2h ≥153. Aqui o jejum (95) já está alterado → 1 valor fecha DMG. Jejum ≥126 ou 2h ≥200 seria DM franco.</div></div>
+
+      <div class="q"><div class="stem">Q4. Gestante de alto risco para pré-eclâmpsia. Qual a dose de AAS na profilaxia segundo o SUS/Brasil e a janela?</div><div class="alts">A) 81 mg, da 20ª sem · B) 100 mg à noite, da 12ª até a 36ª sem · C) 150 mg, no 3º trimestre · D) 300 mg, qualquer momento</div><div class="ans"><b>B.</b> Brasil/SUS = AAS 100 mg à noite, iniciando antes da 16ª sem (idealmente 12ª) até a 36ª. Divergência: ACOG 81 mg, FIGO 150 mg. Associar cálcio em baixa ingesta.</div></div>
+
+      <div class="q"><div class="stem">Q5. Sangramento vaginal vermelho-vivo, indolor, no 3º trimestre, útero com tônus normal, sem sofrimento fetal. Hipótese e conduta inicial?</div><div class="alts">A) DPP / parto imediato · B) Placenta prévia / USG, NÃO fazer toque vaginal · C) Rotura uterina / laparotomia · D) Trabalho de parto / ocitocina</div><div class="ans"><b>B.</b> Indolor + tônus normal + sangue vivo = placenta prévia. Confirmar com USG; o toque vaginal é contraindicado até excluir prévia (risco de hemorragia).</div></div>
+
+      <div class="q"><div class="stem">Q6. Gestante, dor abdominal súbita intensa, hipertonia uterina ("útero lenhoso"), sangue escuro, sofrimento fetal, hipertensa. Diagnóstico?</div><div class="alts">A) Placenta prévia · B) Descolamento prematuro de placenta · C) Rotura de vasa prévia · D) Trabalho de parto normal</div><div class="ans"><b>B.</b> DPP: dor + hipertonia + sangue escuro + sofrimento fetal, associado a HAS/trauma. Emergência obstétrica → estabilizar e interromper a gestação.</div></div>
+
+      <div class="q"><div class="stem">Q7. Puérpera, parto vaginal há 1h, sangramento aumentado, útero amolecido e acima da cicatriz umbilical. Causa e 1ª conduta?</div><div class="alts">A) Laceração / sutura · B) Atonia uterina / massagem + ocitocina · C) Retenção placentária / curagem · D) Coagulopatia / plasma</div><div class="ans"><b>B.</b> Atonia é a 1ª causa de hemorragia pós-parto (Tônus). Conduta: massagem uterina bimanual + ocitocina. Os 4 T: Tônus, Trauma, Tecido, Trombina.</div></div>
+
+      <div class="q"><div class="stem">Q8. Qual o número mínimo de consultas de pré-natal recomendado pelo Ministério da Saúde?</div><div class="alts">A) 4 · B) 6 · C) 8 · D) 10</div><div class="ans"><b>B.</b> Mínimo 6 consultas: 1 no 1º trimestre, 2 no 2º, 3 no 3º (CAB 32 / Guia de Pré-natal APS 2024). A OMS recomenda 8 contatos — diferenciar se a banca pedir.</div></div>
+
+      <div class="q"><div class="stem">Q9. Sobre o ácido fólico na gestação: dose e janela ideais?</div><div class="alts">A) 5 mg, todo o pré-natal · B) 400 µg/dia, da pré-concepção até 12 semanas · C) 1 g, só no 3º tri · D) Não é recomendado de rotina</div><div class="ans"><b>B.</b> 400 µg/dia, idealmente pré-concepção até 12 sem, para prevenir defeitos do tubo neural. Dose alta (4-5 mg) só em alto risco (DTN prévio, uso de anticonvulsivante).</div></div>
+
+      <div class="q"><div class="stem">Q10. Glicemia de jejum de 130 mg/dL na 10ª semana de gestação (1º trimestre). Diagnóstico?</div><div class="alts">A) Normal · B) DMG · C) Diabetes franco (pré-gestacional) · D) Intolerância à glicose</div><div class="ans"><b>C.</b> Jejum ≥126 no 1º trimestre = DM franco (provavelmente pré-gestacional não diagnosticado). Entre 92-125 seria DMG. O TOTG 75g (24-28 sem) é para quem teve rastreio inicial normal.</div></div>
+    </div>
+  </details>
+
+  <details id="ati-ped">
+    <summary>Pediatria — 10 questões comentadas <span class="status done">✓ feito</span></summary>
+    <div class="body">
+      <p class="src">Calibrado em Tratado de Pediatria SBP 6ª ed., calendário PNI 2025/26 e documentos SBP (icterícia, diarreia).</p>
+
+      <div class="q"><div class="stem">Q1. Lactente de 4 meses, diarreia há 2 dias, com prega cutânea lenta, olhos encovados, irritado e bebendo avidamente. Plano de hidratação?</div><div class="alts">A) Plano A (domiciliar) · B) Plano B (SRO 75 mL/kg em 4h na unidade) · C) Plano C (hidratação venosa) · D) Apenas sintomáticos</div><div class="ans"><b>B.</b> Dois ou mais sinais de desidratação (prega, olhos fundos, bebe avidamente) = desidratação → Plano B: TRO supervisionada 75 mL/kg em 4h + zinco. Plano C é para desidratação grave/choque.</div></div>
+
+      <div class="q"><div class="stem">Q2. Recém-nascido com icterícia surgindo nas primeiras 18 horas de vida. Como classificar?</div><div class="alts">A) Fisiológica, observar · B) Sempre patológica, investigar · C) Icterícia do leite materno · D) Normal até 24h</div><div class="ans"><b>B.</b> Icterícia com início <24h de vida é SEMPRE patológica — investigar (incompatibilidade ABO/Rh, hemólise). Também é patológica se bilirrubina direta elevada ou duração >12-14 dias.</div></div>
+
+      <div class="q"><div class="stem">Q3. Quais vacinas o recém-nascido deve receber ainda na maternidade (ao nascer), segundo o PNI?</div><div class="alts">A) Pentavalente e VIP · B) BCG e Hepatite B · C) Tríplice viral e febre amarela · D) Rotavírus e Pneumo-10</div><div class="ans"><b>B.</b> Ao nascer: BCG (dose única) + Hepatite B (idealmente nas primeiras 12-24h). Pentavalente/VIP/Rota/Pneumo começam aos 2 meses.</div></div>
+
+      <div class="q"><div class="stem">Q4. Sobre a vacina de rotavírus, qual afirmação está correta?</div><div class="alts">A) Pode ser feita a qualquer idade · B) Tem janelas etárias absolutas; perdida a janela, perde-se a dose · C) São 3 doses obrigatórias · D) É contraindicada em prematuros sempre</div><div class="ans"><b>B.</b> Rotavírus tem janelas rígidas: 1ª dose até ~3m15d, 2ª até ~7m29d. Se ultrapassar, não se faz (risco de invaginação). Esquema do PNI: 2 e 4 meses.</div></div>
+
+      <div class="q"><div class="stem">Q5. Lactente de 8 meses. Qual marco do desenvolvimento é esperado para a idade?</div><div class="alts">A) Anda sozinho · B) Senta sem apoio · C) Fala frases · D) Sobe escadas</div><div class="ans"><b>B.</b> Sentar sem apoio é esperado por volta dos 9 meses (rola ~6m). Andar com apoio e primeiras palavras ~12m; andar sozinho ~15m.</div></div>
+
+      <div class="q"><div class="stem">Q6. Até que idade o Ministério da Saúde/SBP recomenda aleitamento materno EXCLUSIVO?</div><div class="alts">A) 4 meses · B) 6 meses · C) 12 meses · D) 2 anos</div><div class="ans"><b>B.</b> Aleitamento exclusivo até 6 meses; complementado (com introdução alimentar) até ≥2 anos. Antes dos 6 meses não se oferece água, chá ou outros alimentos.</div></div>
+
+      <div class="q"><div class="stem">Q7. Lactente de 10 meses, febre e tosse, frequência respiratória de 55 irpm. Como interpretar (corte da OMS)?</div><div class="alts">A) Normal para a idade · B) Taquipneia (sinal de pneumonia) · C) Bradipneia · D) Não se avalia FR nessa idade</div><div class="ans"><b>B.</b> Corte de taquipneia (OMS): <2m ≥60; 2-12m ≥50; 1-5a ≥40 irpm. 55 em lactente de 10m (faixa 2-12m, corte ≥50) = taquipneia → marcador de pneumonia.</div></div>
+
+      <div class="q"><div class="stem">Q8. Quais são os testes da triagem neonatal ("os 5 testes")?</div><div class="alts">A) Pezinho, olhinho, orelhinha, coraçãozinho, linguinha · B) Apenas pezinho e olhinho · C) Hemograma, glicemia, TSH, USG, RX · D) Pezinho, sangue, urina, fezes, audição</div><div class="ans"><b>A.</b> Pezinho (triagem metabólica), olhinho (reflexo vermelho), orelhinha (emissões otoacústicas), coraçãozinho (oximetria de pulso) e linguinha (frênulo lingual).</div></div>
+
+      <div class="q"><div class="stem">Q9. Esquema da vacina pentavalente no calendário PNI?</div><div class="alts">A) Ao nascer, 2 e 4 meses · B) 2, 4 e 6 meses, com reforços de DTP aos 15 meses e 4 anos · C) Dose única aos 12 meses · D) 3, 5 e 7 meses</div><div class="ans"><b>B.</b> Pentavalente (DTP + Hib + Hep B) aos 2, 4 e 6 meses. Reforços com DTP aos 15 meses e 4 anos.</div></div>
+
+      <div class="q"><div class="stem">Q10. Na diarreia aguda da criança, qual a recomendação sobre suplementação de zinco?</div><div class="alts">A) Não está indicada · B) 10 mg/dia ≤6m e 20 mg/dia >6m-5a, por 10-14 dias · C) Apenas em desnutridos graves · D) 50 mg dose única</div><div class="ans"><b>B.</b> Zinco em toda diarreia: 10 mg/dia até 6 meses; 20 mg/dia dos 6 meses aos 5 anos, por 10-14 dias. Reduz duração, gravidade e recorrência. (MS/SBP)</div></div>
+    </div>
+  </details>
+</div>
+
+<footer>
+  Material completo — loop Claude Code + Hermes. Flashcards em <code>flashcards-all.md</code> (importar no Anki). Fatos calibrados em <code>fontes-vetadas.md</code>. <b>12/12 seções ✓</b> — APA 5/5, OSCE 3/3, ATI 3/3.
+</footer>
+</div>
+</body>
+</html>
