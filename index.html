@@ -10,7 +10,7 @@
     --line:#2a2f3a; --accent:#5b9dff; --good:#34d399; --warn:#fbbf24; --bad:#f87171;
     --apa:#5b9dff; --osce:#a78bfa; --ati:#34d399;
   }
-  @media print{ :root{--bg:#fff;--card:#fff;--ink:#111;--muted:#555;--line:#ccc} details{open:true} nav.toc{display:none} }
+  @media print{ :root{--bg:#fff;--card:#fff;--ink:#111;--muted:#555;--line:#ccc} details{open:true} nav.toc{display:none} body.js .q .ans{display:block!important} .reveal{display:none!important} }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
   .wrap{max-width:920px;margin:0 auto;padding:24px 18px 80px}
@@ -47,6 +47,10 @@
   .q .alts{margin:2px 0 6px;color:var(--ink)}
   .q .ans{background:#11261c;border:1px solid #1f5138;border-radius:8px;padding:8px 10px;font-size:.9rem}
   .q .ans b{color:var(--good)}
+  body.js .q .ans{display:none}
+  body.js .q.show .ans{display:block}
+  .reveal{font:inherit;font-size:.85rem;cursor:pointer;background:#1d212a;color:var(--accent);border:1px solid var(--line);border-radius:8px;padding:6px 12px;margin-top:2px}
+  .reveal:hover{background:#252b36;border-color:var(--accent)}
   .status{font-size:.8rem;padding:1px 8px;border-radius:6px;border:1px solid var(--line);color:var(--muted)}
   .status.done{color:var(--good);border-color:#1f5138;background:#11261c}
   .status.todo{color:var(--warn);border-color:#5a4a16;background:#231d0c}
@@ -837,5 +841,24 @@
   Material completo — loop Claude Code + Hermes. Flashcards em <code>flashcards-all.md</code> (importar no Anki). Fatos calibrados em <code>fontes-vetadas.md</code>. <b>12/12 seções ✓</b> — APA 5/5, OSCE 3/3, ATI 3/3.
 </footer>
 </div>
+<script>
+  // Esconde os gabaritos por padrão; revela ao clicar. Só ativa se o JS rodar
+  // (a classe .js no body controla o display via CSS), garantindo que sem JS
+  // as respostas continuem visíveis.
+  document.body.classList.add('js');
+  document.querySelectorAll('.q').forEach(function(q){
+    var ans = q.querySelector('.ans');
+    if(!ans) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'reveal';
+    btn.textContent = 'Ver resposta';
+    ans.parentNode.insertBefore(btn, ans);
+    btn.addEventListener('click', function(){
+      var open = q.classList.toggle('show');
+      btn.textContent = open ? 'Ocultar resposta' : 'Ver resposta';
+    });
+  });
+</script>
 </body>
 </html>
