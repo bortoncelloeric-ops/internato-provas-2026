@@ -10,7 +10,7 @@
     --line:#2a2f3a; --accent:#5b9dff; --good:#34d399; --warn:#fbbf24; --bad:#f87171;
     --apa:#5b9dff; --osce:#a78bfa; --ati:#34d399;
   }
-  @media print{ :root{--bg:#fff;--card:#fff;--ink:#111;--muted:#555;--line:#ccc} details{open:true} nav.toc{display:none} body.js .q .ans{display:block!important} .reveal{display:none!important} }
+  @media print{ :root{--bg:#fff;--card:#fff;--ink:#111;--muted:#555;--line:#ccc} details{open:true} .toc{display:none} body.js .q .ans{display:block!important} .reveal{display:none!important} }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
   .wrap{max-width:920px;margin:0 auto;padding:24px 18px 80px}
@@ -19,10 +19,11 @@
   .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.85rem;color:var(--muted);margin-bottom:20px}
   .pill{padding:2px 10px;border-radius:999px;font-weight:600;font-size:.8rem;color:#0b0d12}
   .pill.apa{background:var(--apa)} .pill.osce{background:var(--osce)} .pill.ati{background:var(--ati)}
-  nav.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:24px;position:sticky;top:8px;z-index:5}
-  nav.toc strong{display:block;margin-bottom:8px;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
-  nav.toc a{color:var(--accent);text-decoration:none;display:inline-block;margin:4px 8px 4px 0;padding:8px 12px;font-size:.9rem;line-height:1.2;background:#1d212a;border:1px solid var(--line);border-radius:8px}
-  nav.toc a:hover{background:#252b36;border-color:var(--accent)}
+  details.toc{margin-bottom:24px}
+  details.toc > summary{text-transform:uppercase;letter-spacing:.05em;font-size:.8rem;color:var(--muted)}
+  .toc-links{display:flex;flex-wrap:wrap;gap:8px;padding:4px 18px 16px}
+  .toc a{color:var(--accent);text-decoration:none;padding:8px 12px;font-size:.9rem;line-height:1.2;background:#1d212a;border:1px solid var(--line);border-radius:8px}
+  .toc a:hover{background:#252b36;border-color:var(--accent)}
   .block{margin:28px 0 8px}
   .block > h2{font-size:1.2rem;border-left:5px solid var(--line);padding-left:10px;margin-bottom:4px}
   .block.apa > h2{border-color:var(--apa)} .block.osce > h2{border-color:var(--osce)} .block.ati > h2{border-color:var(--ati)}
@@ -54,6 +55,13 @@
   .status{font-size:.8rem;padding:1px 8px;border-radius:6px;border:1px solid var(--line);color:var(--muted)}
   .status.done{color:var(--good);border-color:#1f5138;background:#11261c}
   .status.todo{color:var(--warn);border-color:#5a4a16;background:#231d0c}
+  .estacao-sim{margin-top:22px;border-top:2px dashed var(--osce);padding-top:8px}
+  .caso{margin-top:22px;padding-top:14px;border-top:1px solid var(--line)}
+  .caso h4{font-size:1.06rem;margin:0 0 4px;color:var(--osce)}
+  .fase{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--osce);font-weight:700;margin:16px 0 0}
+  .vinheta{background:#1b1726;border:1px solid #3a2f5a;border-radius:10px;padding:10px 14px;margin:8px 0;font-size:.95rem}
+  details.script{background:#11261c;border-color:#1f5138;margin:10px 0}
+  details.script > summary{font-size:.85rem;color:var(--good)}
   footer{color:var(--muted);font-size:.8rem;margin-top:40px;border-top:1px solid var(--line);padding-top:14px}
 </style>
 </head>
@@ -69,21 +77,23 @@
   </div>
 </header>
 
-<nav class="toc">
-  <strong>Navegação</strong>
-  <a href="#banca">★ Banca decodificada (APA)</a>
-  <a href="#apa-mi">APA · Materno-Infantil</a>
-  <a href="#apa-clinica">APA · Clínica ampla</a>
-  <a href="#apa-cirurgia">APA · Cirurgia/urgências</a>
-  <a href="#apa-coletiva">APA · Saúde Coletiva/SUS</a>
-  <a href="#apa-simulado">APA · Simulado</a>
-  <a href="#osce-gineco">OSCE · Ginecologia</a>
-  <a href="#osce-obs">OSCE · Obstetrícia</a>
-  <a href="#osce-ped">OSCE · Pediatria</a>
-  <a href="#ati-gineco">ATI · Ginecologia</a>
-  <a href="#ati-obs">ATI · Obstetrícia</a>
-  <a href="#ati-ped">ATI · Pediatria</a>
-</nav>
+<details class="toc" id="toc" open>
+  <summary>Navegação — toque para abrir/fechar</summary>
+  <div class="toc-links">
+    <a href="#banca">★ Banca decodificada (APA)</a>
+    <a href="#apa-mi">APA · Materno-Infantil</a>
+    <a href="#apa-clinica">APA · Clínica ampla</a>
+    <a href="#apa-cirurgia">APA · Cirurgia/urgências</a>
+    <a href="#apa-coletiva">APA · Saúde Coletiva/SUS</a>
+    <a href="#apa-simulado">APA · Simulado</a>
+    <a href="#osce-gineco">OSCE · Ginecologia</a>
+    <a href="#osce-obs">OSCE · Obstetrícia</a>
+    <a href="#osce-ped">OSCE · Pediatria</a>
+    <a href="#ati-gineco">ATI · Ginecologia</a>
+    <a href="#ati-obs">ATI · Obstetrícia</a>
+    <a href="#ati-ped">ATI · Pediatria</a>
+  </div>
+</details>
 
 <!-- ====================== BANCA DECODIFICADA ====================== -->
 <div class="block">
@@ -720,6 +730,110 @@
         <tr><td><strong>Cirurgia ginecológica (conceitos)</strong></td><td>Vias: histerectomia (vaginal/abdominal/laparoscópica), conização (NIC II–III), laqueadura (Lei 14.443/2022: a partir de 21a ou 2 filhos, sem exigir consentimento do cônjuge).</td><td>Laqueadura pode ser no parto/cesárea desde a Lei de 2022. Conização é diagnóstica e terapêutica na NIC de alto grau.</td></tr>
         <tr><td>★ <strong>Violência sexual</strong></td><td><strong>Acolher sem julgar + não exigir BO nem perícia para atender.</strong> Em ≤72h: <strong>contracepção de emergência</strong> (levonorgestrel) + <strong>profilaxia IST</strong> (penicilina/ceftriaxona/azitro/metronidazol) + <strong>PEP HIV até 72h</strong> + Hep B (vacina+IG). Notificação compulsória (SINAN); aborto legal é direito.</td><td>Atendimento <strong>independe</strong> de boletim de ocorrência. PEP-HIV só vale &lt;72h. Notificar é obrigatório.</td></tr>
       </table>
+
+      <div class="estacao-sim">
+      <h3>★★ Estações simuladas — treino socrático</h3>
+      <p class="src"><b>Como usar:</b> leia a vinheta, percorra cada FASE na ordem real da estação. Em cada passo, <b>pense/fale a sua resposta em voz alta ANTES</b> de tocar em "Ver resposta". A resolução traz o esperado + por quê + o que pontua. No fim, o checklist é o gabarito do avaliador e o script do paciente simulado serve pra refazer a estação sozinho.</p>
+
+      <!-- ====== CASO 1 ====== -->
+      <div class="caso">
+        <h4>Caso 1 — Sangramento vaginal na pós-menopausa</h4>
+        <div class="vinheta"><b>Instrução ao candidato (8 min):</b> Mulher, 58 anos, G3P3, menopausa aos 51. Procura a unidade por <b>sangramento vaginal há 3 semanas</b>, em pequena quantidade, sem dor. Nega terapia hormonal. HAS, obesa (IMC 34), DM2. Conduza a estação: anamnese dirigida, exame e conduta, e comunique o plano à paciente.</div>
+
+        <p class="fase">Fase 1 · Abertura + anamnese dirigida</p>
+        <div class="q">
+          <div class="stem">Você entra na estação. O que faz na abertura e o que precisa investigar na anamnese? (fale antes de revelar)</div>
+          <div class="ans"><b>Abertura (pontua sempre):</b> identifica-se, confirma o nome da paciente, higieniza as mãos, pede consentimento, garante privacidade.<br><b>Anamnese dirigida:</b> caracterizar o sangramento (volume, duração, relação com esforço/coito); afastar TRH/<b>tamoxifeno</b>; rastrear <b>fatores de risco para CA de endométrio</b> — obesidade, DM, HAS, nuliparidade, anovulação crônica/SOP, menopausa tardia, síndrome de Lynch; data da última citologia/USG; uso de anticoagulante. <b>Por quê:</b> na pós-menopausa todo sangramento é <b>CA de endométrio até prova em contrário</b> — a anamnese já estratifica o risco. <span class="src">materno-infantil-fatos · FEBRASGO</span></div>
+        </div>
+
+        <p class="fase">Fase 2 · Exame físico dirigido</p>
+        <div class="q">
+          <div class="stem">Qual exame você realiza/solicita na estação e o que verbaliza?</div>
+          <div class="ans"><b>Exame especular:</b> confirmar que o sangramento é de origem <b>uterina</b> (e não de colo/vagina/uretra), inspecionar o colo. <b>Toque bimanual:</b> volume e mobilidade uterina, massa anexial, dor. <b>Geral:</b> sinais de anemia, IMC. <b>Verbalizar os achados</b> ao avaliador. <b>Pega:</b> não pular o especular — a banca quer que você localize a fonte do sangramento.</div>
+        </div>
+
+        <p class="fase">Fase 3 · Hipótese + conduta</p>
+        <div class="q">
+          <div class="stem">Qual a principal hipótese e a conduta correta (exame que decide + próximo passo)?</div>
+          <div class="ans"><b>Hipótese:</b> carcinoma de endométrio até prova em contrário (atrofia é a causa mais comum, mas só se confirma <b>depois</b> de excluir o CA).<br><b>Conduta:</b> <b>USG transvaginal</b> → eco endometrial <b>&gt;4–5 mm</b> (ou qualquer sangramento persistente) → <b>biópsia de endométrio / histeroscopia com biópsia</b> (padrão-ouro: histológico). <b>Nunca</b> "tranquilizar, é da idade". <span class="src">FEBRASGO / divergencias-de-banca</span></div>
+        </div>
+
+        <p class="fase">Fase 4 · Comunicação com a paciente</p>
+        <div class="q">
+          <div class="stem">Como você comunica o plano sem alarmar nem banalizar? (a comunicação pontua muito)</div>
+          <div class="ans">Linguagem simples; <b>não banaliza</b> ("não é só da idade") nem crava câncer. Explica: "esse sangramento depois da menopausa a gente <b>precisa investigar</b> por dentro do útero, com um ultrassom e, se necessário, uma biópsia, pra ter certeza do que está causando". Acolhe a ansiedade, valida a procura, combina o retorno com o resultado, pergunta se há dúvidas e confirma o entendimento.</div>
+        </div>
+
+        <h3>Checklist pontuado (gabarito do avaliador)</h3>
+        <table>
+          <tr><th>Item</th><th>Pontua</th></tr>
+          <tr><td>Abertura: identificação + higiene das mãos + consentimento + privacidade</td><td></td></tr>
+          <tr><td>Caracteriza o sangramento e afasta TRH/tamoxifeno</td><td></td></tr>
+          <tr><td>Rastreia fatores de risco para CA de endométrio (obesidade/DM/HAS/anovulação)</td><td></td></tr>
+          <tr><td>Exame especular (localiza a fonte) + toque bimanual</td><td></td></tr>
+          <tr><td>Cita "CA de endométrio até prova em contrário"</td><td></td></tr>
+          <tr><td>Conduta: USG-TV (eco &gt;4–5 mm) → biópsia/histeroscopia</td><td></td></tr>
+          <tr><td>Comunicação acessível, acolhe, não banaliza, confirma entendimento</td><td></td></tr>
+        </table>
+
+        <details class="script">
+          <summary>Script do paciente simulado (abrir só pra refazer a estação sozinho)</summary>
+          <div class="body">
+            <p><b>Se perguntarem sobre o sangramento:</b> "Faz umas 3 semanas, é pouquinho, tipo borra de café, sem dor. Eu já tinha parado de menstruar faz uns 7 anos."<br>
+            <b>TRH/tamoxifeno:</b> "Não tomo hormônio nenhum."<br>
+            <b>Antecedentes:</b> "Tenho pressão alta e diabetes, sou do peso forte. Tive 3 filhos de parto normal."<br>
+            <b>Preocupação (se acolherem):</b> "Doutor, isso é normal? Minha vizinha falou que sangrar depois da menopausa é câncer..."<br>
+            <b>Última prevenção:</b> "Faz uns 4 anos que não faço o preventivo."</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- ====== CASO 2 ====== -->
+      <div class="caso">
+        <h4>Caso 2 — Aconselhamento contraceptivo</h4>
+        <div class="vinheta"><b>Instrução ao candidato (8 min):</b> Mulher, 37 anos, <b>tabagista (15 cigarros/dia)</b>, vem à unidade querendo iniciar a "pílula" combinada porque uma amiga usa e gostou. Tem HAS leve em uso de losartana. Conduza o aconselhamento contraceptivo.</div>
+
+        <p class="fase">Fase 1 · Anamnese + critérios de elegibilidade</p>
+        <div class="q">
+          <div class="stem">Antes de prescrever qualquer método, o que você precisa investigar?</div>
+          <div class="ans"><b>Critérios de elegibilidade da OMS</b> (categorias 1–4): <b>tabagismo + idade ≥35 anos</b>, HAS, <b>enxaqueca com aura</b>, TVP/TEP prévia ou trombofilia, amamentação &lt;6 semanas, hepatopatia, CA de mama. Investiga também desejo reprodutivo, regularidade do ciclo, IST/parceria, amamentação. <b>Por quê:</b> a escolha do método depende das contraindicações, não da preferência da amiga.</div>
+        </div>
+
+        <p class="fase">Fase 2 · Decisão (pode dar o combinado?)</p>
+        <div class="q">
+          <div class="stem">Pode prescrever o anticoncepcional combinado para ela? O que oferece?</div>
+          <div class="ans"><b>NÃO.</b> Estrogênio é <b>contraindicado</b>: ela é <b>fumante ≥35 anos</b> (categoria 3/4 da OMS) e ainda tem HAS — risco cardiovascular/tromboembólico inaceitável.<br><b>Oferecer método só de progestágeno</b> (minipílula de desogestrel, implante de etonogestrel, injetável trimestral de medroxiprogesterona) <b>ou DIU</b> (cobre ou hormonal/levonorgestrel). Decisão compartilhada conforme o desejo dela. <span class="src">Critérios OMS · FEBRASGO</span></div>
+        </div>
+
+        <p class="fase">Fase 3 · Comunicação + fechamento</p>
+        <div class="q">
+          <div class="stem">Como você conduz a conversa sem simplesmente "negar a pílula"?</div>
+          <div class="ans">Não impõe; explica o <b>porquê</b>: "como a senhora fuma e tem mais de 35 anos e pressão alta, essa pílula com estrogênio aumenta muito o risco de trombose e infarto — por isso ela não é segura pra senhora". Apresenta as alternativas seguras, decide junto, reforça <b>dupla proteção</b> (preservativo para IST) e oferece <b>apoio para cessar o tabagismo</b>. Confirma o entendimento e combina retorno.</div>
+        </div>
+
+        <h3>Checklist pontuado (gabarito do avaliador)</h3>
+        <table>
+          <tr><th>Item</th><th>Pontua</th></tr>
+          <tr><td>Abertura: identificação + consentimento + escuta do motivo</td><td></td></tr>
+          <tr><td>Aplica critérios de elegibilidade da OMS (rastreia tabagismo/idade/HAS/aura)</td><td></td></tr>
+          <tr><td>Identifica a contraindicação ao estrogênio e <b>não</b> prescreve o combinado</td><td></td></tr>
+          <tr><td>Oferece método de progestágeno ou DIU (decisão compartilhada)</td><td></td></tr>
+          <tr><td>Orienta dupla proteção (preservativo) + cessação do tabagismo</td><td></td></tr>
+          <tr><td>Comunicação acessível, justifica a recusa, confirma entendimento</td><td></td></tr>
+        </table>
+
+        <details class="script">
+          <summary>Script do paciente simulado (abrir só pra refazer a estação sozinho)</summary>
+          <div class="body">
+            <p><b>Motivo:</b> "Doutora, quero começar a pílula, aquela que minha amiga toma. É boa, né?"<br>
+            <b>Tabagismo:</b> "Fumo, uns 15 por dia, desde os 20."<br>
+            <b>Pressão:</b> "Tenho pressão alta, tomo losartana."<br>
+            <b>Se recusarem o combinado:</b> "Mas por que eu não posso tomar a pílula? Minha amiga toma e não tem nada..."<br>
+            <b>Desejo reprodutivo:</b> "Não quero mais filhos por enquanto, tenho dois."</p>
+          </div>
+        </details>
+      </div>
+      </div>
     </div>
   </details>
 
@@ -781,6 +895,108 @@
         <tr><td><strong>Alterações do líquido amniótico</strong></td><td>ILA normal 5–24 ou maior bolsão 2–8 cm. <strong>Oligoâmnio</strong> (ILA&lt;5): RPMO, CIUR, insuf. placentária, malformação renal. <strong>Polidrâmnio</strong> (ILA&gt;24): DMG, malformação (atresia de TGI/SNC), isoimunização, gemelar.</td><td>Oligo súbito = pensar <strong>rotura de membranas</strong>. Polidrâmnio com AU &gt;&gt; IG.</td></tr>
         <tr><td><strong>Infecções puerperais</strong></td><td><strong>Endometrite</strong> (mais comum, pós-cesárea): febre + útero doloroso + loquiação fétida → internar + <strong>clindamicina + gentamicina IV, mantendo amamentação</strong> (gabarito da banca, APA Q1). Mastite: amox-clav/cefalexina + manter amamentação; abscesso → drenar.</td><td>Banca cobra <strong>manter</strong> amamentação e o esquema <strong>clinda+genta</strong> (não cefalexina VO, não suspender o peito).</td></tr>
       </table>
+
+      <div class="estacao-sim">
+      <h3>★★ Estações simuladas — treino socrático</h3>
+      <p class="src"><b>Como usar:</b> leia a vinheta, percorra cada FASE na ordem real da estação. Em cada passo, <b>pense/fale a resposta em voz alta ANTES</b> de "Ver resposta". A resolução traz o esperado + por quê + o que pontua. Checklist = gabarito do avaliador; script do paciente serve pra refazer sozinho.</p>
+
+      <!-- ====== CASO 1 ====== -->
+      <div class="caso">
+        <h4>Caso 1 — Consulta de pré-natal de rotina</h4>
+        <div class="vinheta"><b>Instrução ao candidato (8 min):</b> Gestante, 26 anos, G2P1, IG <b>28 semanas</b> (DUM confirmada por USG precoce), assintomática, vem à consulta de pré-natal de rotina. Conduza a consulta: anamnese, exame obstétrico, exames/vacinas/suplementação e orientações.</div>
+
+        <p class="fase">Fase 1 · Abertura + confirmação de IG/DPP + anamnese</p>
+        <div class="q">
+          <div class="stem">Como você abre e o que precisa confirmar/perguntar?</div>
+          <div class="ans"><b>Abertura:</b> identifica-se, confirma nome, higieniza as mãos, consente.<br><b>Confirma IG</b> (DUM + USG precoce) e calcula a <b>DPP pela regra de Näegele</b> (DUM + 7 dias − 3 meses). <b>Anamnese:</b> queixas, movimentação fetal, e ativamente os <b>sinais de alarme</b> (sangramento, perda de líquido, ↓movimentos, cefaleia/escotomas/epigastralgia), intercorrências e adesão. <span class="src">CAB 32 / Guia APS 2024</span></div>
+        </div>
+
+        <p class="fase">Fase 2 · Exame obstétrico</p>
+        <div class="q">
+          <div class="stem">Que exame você realiza e o que verbaliza?</div>
+          <div class="ans"><b>Geral:</b> PA, peso/IMC, edema. <b>AU</b> com fita do bordo superior da sínfise ao fundo uterino → correlaciona <b>AU(cm) ≈ IG(sem) entre 20–34 sem</b>. <b>Manobras de Leopold</b> (situação/apresentação). <b>BCF</b> 110–160 bpm no foco do dorso fetal, por 1 min, diferenciando do pulso materno. <b>Pega:</b> AU &gt;&gt; IG → poli/macrossomia/gemelar; AU &lt;&lt; IG → CIUR/oligo.</div>
+        </div>
+
+        <p class="fase">Fase 3 · Exames de rotina, vacinas e suplementação</p>
+        <div class="q">
+          <div class="stem">O que você solicita/prescreve nessa idade gestacional?</div>
+          <div class="ans"><b>Revisa exames por trimestre.</b> <b>Vacinas:</b> dTpa a partir de 20 sem, hepatite B, influenza. <b>Suplementação:</b> ácido fólico 400 µg (pré-concepção até 12 sem) + ferro. Se <b>alto risco</b> de pré-eclâmpsia: <b>AAS 100 mg à noite (12ª→36ª sem) + cálcio</b>. <span class="src">MS / FEBRASGO (ACOG 81mg · FIGO 150mg)</span></div>
+        </div>
+
+        <p class="fase">Fase 4 · Orientações + comunicação</p>
+        <div class="q">
+          <div class="stem">O que você orienta e como fecha a consulta?</div>
+          <div class="ans">Reforça os <b>sinais de alarme</b> e quando voltar (mínimo <b>6 consultas</b>: 1 no 1º tri, 2 no 2º, 3 no 3º). Linguagem acessível, acolhe dúvidas, confirma o entendimento e combina o retorno.</div>
+        </div>
+
+        <h3>Checklist pontuado (gabarito do avaliador)</h3>
+        <table>
+          <tr><th>Item</th><th>Pontua</th></tr>
+          <tr><td>Abertura: identificação + higiene + consentimento</td><td></td></tr>
+          <tr><td>Confirma IG e calcula DPP (Näegele)</td><td></td></tr>
+          <tr><td>Pesquisa ativa de sinais de alarme + movimentação fetal</td><td></td></tr>
+          <tr><td>PA/peso/edema + AU (correlaciona com IG) + Leopold + BCF (técnica correta)</td><td></td></tr>
+          <tr><td>Vacinas (dTpa/HepB/influenza) + suplementação (fólico/ferro)</td><td></td></tr>
+          <tr><td>Orienta sinais de alarme + retorno; comunicação acessível, confirma entendimento</td><td></td></tr>
+        </table>
+
+        <details class="script">
+          <summary>Script do paciente simulado (abrir só pra refazer a estação sozinho)</summary>
+          <div class="body">
+            <p><b>Queixas:</b> "Tô bem, doutor, só um pouco de azia. O bebê mexe bastante."<br>
+            <b>DUM:</b> "Minha última menstruação foi tem 28 semanas, o ultrassom do começo bateu."<br>
+            <b>Sinais de alarme (se perguntarem):</b> "Não tive sangramento, nem perda de água, nem dor de cabeça."<br>
+            <b>Vacina (se perguntarem):</b> "Tomei a da gripe, não sei das outras."<br>
+            <b>Dúvida:</b> "Doutor, posso continuar trabalhando? E o que eu faço se sentir alguma coisa errada?"</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- ====== CASO 2 ====== -->
+      <div class="caso">
+        <h4>Caso 2 — Pré-eclâmpsia com sinais de gravidade</h4>
+        <div class="vinheta"><b>Instrução ao candidato (8 min):</b> Gestante, 32 anos, <b>35 semanas</b>, chega ao pronto-atendimento com <b>cefaleia intensa, escotomas</b> e <b>PA 168/112 mmHg</b>, reflexos exaltados. Conduza: diagnóstico, conduta imediata e comunicação.</div>
+
+        <p class="fase">Fase 1 · Reconhecimento + diagnóstico</p>
+        <div class="q">
+          <div class="stem">Qual o diagnóstico e quais são os critérios de gravidade?</div>
+          <div class="ans"><b>Pré-eclâmpsia com sinal de gravidade</b> (PA ≥160/110 + sintomas neurológicos).<br><b>Critérios de gravidade:</b> PA ≥160/110, plaquetas &lt;100 mil, Cr &gt;1,1, TGO/TGP 2×, sintomas visuais/cefaleia, dor epigástrica, edema agudo de pulmão. <span class="src">SHEG FEBRASGO 2023 / ISSHP</span></div>
+        </div>
+
+        <p class="fase">Fase 2 · Conduta imediata</p>
+        <div class="q">
+          <div class="stem">Qual a conduta imediata (3 pilares)?</div>
+          <div class="ans"><b>1) Sulfato de magnésio</b> (Zuspan ou Pritchard) para <b>prevenir/tratar convulsão</b> — manter 24h após o parto/última crise; antídoto = <b>gluconato de cálcio</b>. <b>2) Anti-hipertensivo</b> para PA ≥160/110: <b>hidralazina EV ou nifedipino VO</b>. <b>3) Resolver a gestação</b> (com 35 sem, ≥34 → <b>parto</b> é o tratamento definitivo). <b>Pega:</b> MgSO₄ é para a <b>convulsão</b>, não para baixar a PA.</div>
+        </div>
+
+        <p class="fase">Fase 3 · Comunicação</p>
+        <div class="q">
+          <div class="stem">Como você comunica a gravidade e a necessidade de interromper a gestação?</div>
+          <div class="ans">Explica com clareza e calma que a pressão está em nível perigoso para ela e o bebê, que é preciso <b>internar</b>, dar medicação para proteger de convulsão e <b>antecipar o parto</b>. Acolhe o medo, responde às dúvidas, confirma o entendimento da gestante/família.</div>
+        </div>
+
+        <h3>Checklist pontuado (gabarito do avaliador)</h3>
+        <table>
+          <tr><th>Item</th><th>Pontua</th></tr>
+          <tr><td>Reconhece pré-eclâmpsia com sinal de gravidade</td><td></td></tr>
+          <tr><td>Cita critérios de gravidade objetivos</td><td></td></tr>
+          <tr><td>Sulfato de magnésio para convulsão (+ antídoto gluconato de cálcio)</td><td></td></tr>
+          <tr><td>Anti-hipertensivo para PA ≥160/110 (hidralazina/nifedipino)</td><td></td></tr>
+          <tr><td>Indica resolução da gestação (parto, ≥34 sem)</td><td></td></tr>
+          <tr><td>Comunicação clara da gravidade + acolhimento + entendimento</td><td></td></tr>
+        </table>
+
+        <details class="script">
+          <summary>Script do paciente simulado (abrir só pra refazer a estação sozinho)</summary>
+          <div class="body">
+            <p><b>Queixa:</b> "Doutor, minha cabeça tá estourando e eu tô enxergando umas luzinhas."<br>
+            <b>Antecedentes:</b> "Tô de 35 semanas, é meu primeiro filho, a pressão andou subindo no fim."<br>
+            <b>Ao ser informada do parto:</b> "Mas já? O bebê não é muito novo pra nascer? É perigoso?"<br>
+            <b>Sintomas extras (se perguntarem):</b> "Tô com uma dorzinha aqui em cima da barriga também."</p>
+          </div>
+        </details>
+      </div>
+      </div>
     </div>
   </details>
 
@@ -868,6 +1084,102 @@
         <tr><td>Líquido meconial</td><td>RN <strong>não vigoroso</strong> → iniciar VPP (a aspiração traqueal de rotina <strong>não</strong> é mais recomendada). Vigoroso → conduta normal.</td></tr>
       </table>
       <p class="src">Calibrado no Programa de Reanimação Neonatal SBP (alinhado ISA/ILCOR). O fio condutor da estação é sempre a <b>FC</b>: &lt;100 → VPP; &lt;60 → massagem; persistente → adrenalina.</p>
+
+      <div class="estacao-sim">
+      <h3>★★ Estações simuladas — treino socrático</h3>
+      <p class="src"><b>Como usar:</b> leia a vinheta, percorra cada FASE na ordem real da estação. Em cada passo, <b>pense/fale a resposta em voz alta ANTES</b> de "Ver resposta". A comunicação com o cuidador pontua muito na pediatria. Checklist = gabarito; script serve pra refazer sozinho.</p>
+
+      <!-- ====== CASO 1 ====== -->
+      <div class="caso">
+        <h4>Caso 1 — Diarreia aguda com desidratação (GECA)</h4>
+        <div class="vinheta"><b>Instrução ao candidato (8 min):</b> Lactente, <b>14 meses</b>, com diarreia aquosa há 2 dias (~6 evacuações/dia) e alguns vômitos. A mãe diz que ele <b>bebe avidamente</b> e está com os <b>olhos um pouco fundos</b>. Avalie, classifique e conduza, orientando a mãe.</div>
+
+        <p class="fase">Fase 1 · Anamnese + classificação do grau de desidratação</p>
+        <div class="q">
+          <div class="stem">O que você pergunta/avalia e como classifica a desidratação?</div>
+          <div class="ans"><b>Anamnese:</b> caracterizar a diarreia (sangue/muco? duração), diurese, vômitos, aceitação de líquidos, febre. <b>Sinais de desidratação:</b> estado geral, olhos fundos, <b>sede/bebe avidamente</b>, prega cutânea, lágrimas, mucosas. <b>Classificação:</b> bebe avidamente + olhos fundos = <b>desidratação → Plano B</b> (não é grave: criança não está letárgica nem bebendo mal). <span class="src">Fluxograma diarreia MS/SBP</span></div>
+        </div>
+
+        <p class="fase">Fase 2 · Conduta (terapia de reidratação)</p>
+        <div class="q">
+          <div class="stem">Qual o plano e como você executa?</div>
+          <div class="ans"><b>Plano B:</b> <b>SRO 75 mL/kg em 4h na unidade</b>, supervisionado, reavaliando. <b>Zinco</b> 10–14 dias (10 mg/dia ≤6 m; <b>20 mg/dia &gt;6 m</b>). <b>Manter aleitamento/alimentação.</b> <b>Não</b> usar ATB de rotina (só disenteria com sinais sistêmicos/cólera/imunossupressão), <b>nem</b> antiemético/antidiarreico de rotina. Se evoluir para letargia/não bebe → Plano C (venosa).</div>
+        </div>
+
+        <p class="fase">Fase 3 · Comunicação com o cuidador + sinais de alarme</p>
+        <div class="q">
+          <div class="stem">O que você orienta à mãe (e como)?</div>
+          <div class="ans">Ensina a <b>preparar e oferecer o SRO em casa</b> (após cada evacuação), manter a alimentação e o peito. Orienta <b>sinais de alarme para retorno</b>: não consegue beber, piora, sangue nas fezes, vômitos persistentes, prostração, febre alta. Linguagem simples, <b>sem culpabilizar</b>, confirma o entendimento ("o que a senhora entendeu?").</div>
+        </div>
+
+        <h3>Checklist pontuado (gabarito do avaliador)</h3>
+        <table>
+          <tr><th>Item</th><th>Pontua</th></tr>
+          <tr><td>Caracteriza a diarreia (sangue/duração) e procura vômitos/diurese</td><td></td></tr>
+          <tr><td>Avalia sinais de desidratação (geral, olhos, sede, prega)</td><td></td></tr>
+          <tr><td>Classifica corretamente (Plano B)</td><td></td></tr>
+          <tr><td>SRO 75 mL/kg em 4h + zinco + manter alimentação/peito</td><td></td></tr>
+          <tr><td>Não prescreve ATB/antiemético de rotina</td><td></td></tr>
+          <tr><td>Orienta sinais de alarme + comunicação acessível, sem culpabilizar</td><td></td></tr>
+        </table>
+
+        <details class="script">
+          <summary>Script do paciente simulado / cuidador (abrir só pra refazer sozinho)</summary>
+          <div class="body">
+            <p><b>História:</b> "Faz 2 dias que ele tá com diarreia, bem aguada, umas 6 vezes por dia, e vomitou umas 2 vezes."<br>
+            <b>Aceitação:</b> "Ele tá com muita sede, pega a mamadeira com vontade."<br>
+            <b>Sangue nas fezes:</b> "Não, não tem sangue."<br>
+            <b>Diurese:</b> "A fralda tá menos molhada que o normal."<br>
+            <b>Dúvida da mãe:</b> "Doutor, não é melhor dar um remédio pra cortar a diarreia? E posso continuar dando de mamar?"</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- ====== CASO 2 ====== -->
+      <div class="caso">
+        <h4>Caso 2 — Consulta de puericultura (lactente de 12 meses)</h4>
+        <div class="vinheta"><b>Instrução ao candidato (8 min):</b> Lactente de <b>12 meses</b> trazido para consulta de rotina. A mãe pergunta sobre vacinas e alimentação. Conduza a puericultura.</div>
+
+        <p class="fase">Fase 1 · Alimentação + crescimento + desenvolvimento</p>
+        <div class="q">
+          <div class="stem">O que você avalia na puericultura?</div>
+          <div class="ans"><b>Alimentação:</b> aleitamento (exclusivo até 6 m, complementado até ≥2 anos), alimentação atual. <b>Crescimento:</b> plota P/I, E/I, P/E e <b>PC na caderneta (curvas OMS)</b> — avalia a <b>tendência da curva</b>, não um ponto isolado. <b>Desenvolvimento:</b> marcos de 12 m (anda com apoio + primeiras palavras). Revê a caderneta de vacinação. <span class="src">Tratado SBP / caderneta MS</span></div>
+        </div>
+
+        <p class="fase">Fase 2 · Vacinas e suplementação</p>
+        <div class="q">
+          <div class="stem">Quais vacinas aos 12 meses e o que você suplementa?</div>
+          <div class="ans"><b>Aos 12 meses (PNI):</b> <b>tríplice viral</b> + reforço de <b>pneumocócica</b> + reforço de <b>meningocócica C</b>. <b>Suplementação:</b> <b>ferro profilático</b> (dos 3–6 meses até 2 anos) e <b>vitamina D</b> (1º ano). <b>Pega:</b> avaliar a caderneta e completar atrasos; banca "oficial" = PNI, "mais completa" = SBP.</div>
+        </div>
+
+        <p class="fase">Fase 3 · Comunicação + prevenção</p>
+        <div class="q">
+          <div class="stem">O que mais você orienta e como fecha?</div>
+          <div class="ans"><b>Prevenção de acidentes</b> (idade de maior risco), saúde bucal, sono, estímulo ao desenvolvimento. Linguagem simples, acolhe as dúvidas da mãe, confirma o entendimento e combina o retorno/próxima consulta.</div>
+        </div>
+
+        <h3>Checklist pontuado (gabarito do avaliador)</h3>
+        <table>
+          <tr><th>Item</th><th>Pontua</th></tr>
+          <tr><td>Avalia alimentação/aleitamento</td><td></td></tr>
+          <tr><td>Plota e interpreta as curvas (tendência) + PC na caderneta</td><td></td></tr>
+          <tr><td>Avalia marcos do desenvolvimento (12 m)</td><td></td></tr>
+          <tr><td>Vacinas dos 12 m (tríplice viral + reforços pneumo/menC) e checa caderneta</td><td></td></tr>
+          <tr><td>Suplementação: ferro + vitamina D</td><td></td></tr>
+          <tr><td>Orienta prevenção de acidentes + comunicação acessível, confirma entendimento</td><td></td></tr>
+        </table>
+
+        <details class="script">
+          <summary>Script do paciente simulado / cuidador (abrir só pra refazer sozinho)</summary>
+          <div class="body">
+            <p><b>Alimentação:</b> "Ainda mamo no peito, e ele come a comida da família agora."<br>
+            <b>Desenvolvimento:</b> "Ele tá engatinhando rápido e fica em pé segurando no sofá, fala 'mama' e 'papa'."<br>
+            <b>Vacina:</b> "Doutora, ele precisa tomar vacina hoje? Tô com medo da febre."<br>
+            <b>Dúvida:</b> "Preciso dar alguma vitamina? E até quando dou o peito?"</p>
+          </div>
+        </details>
+      </div>
+      </div>
     </div>
   </details>
 </div>
@@ -980,6 +1292,10 @@
       btn.textContent = open ? 'Ocultar resposta' : 'Ver resposta';
     });
   });
+
+  // No celular, começa com a navegação recolhida (senão ocupa a tela toda).
+  var toc = document.getElementById('toc');
+  if(toc && window.matchMedia('(max-width:700px)').matches){ toc.open = false; }
 </script>
 </body>
 </html>
